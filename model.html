@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Models: LSTM, TimesFM and the adaptive ensemble | Premarket India</title>
+<meta name="description" content="How the NIFTY 50 LSTM forecast works: 3 layer LSTM (200·200·150) ported from a TensorFlow 1.6 tutorial, trained on 18 years of daily NIFTY data, validated against the article's HPQ results, with rolling backtest metrics.">
+<link rel="canonical" href="https://premarket-india-report.netlify.app/model.html">
+<meta name="theme-color" content="#f5f6f8">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="India Premarket Intelligence">
+<meta property="og:title" content="Models: architecture, training, backtest">
+<meta property="og:description" content="3 layer LSTM (200·200·150), TensorFlow 1.6 semantics ported to JS, trained on NIFTY 2007 to 2026, validated on the article's HPQ dataset.">
+<meta property="og:url" content="https://premarket-india-report.netlify.app/model.html">
+<meta property="og:image" content="https://premarket-india-report.netlify.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/assets/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "NIFTY 50 LSTM forecasting model: architecture, training and validation",
+  "url": "https://premarket-india-report.netlify.app/model.html",
+  "author": { "@type": "Organization", "name": "Premarket India" },
+  "datePublished": "2026-10-17",
+  "about": ["LSTM", "NIFTY 50", "time series forecasting", "TensorFlow"]
+}
+</script>
+<noscript><style>@media (max-width:919px){.nav-links{display:flex!important;flex-wrap:wrap}.nav-toggle{display:none!important}}</style></noscript>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="India Premarket Intelligence, home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#0e6e78"/>
+        <path d="M6 22 L12 14 L16 18 L22 8 L26 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="22" cy="8" r="2.4" fill="#fff"/>
+      </svg>
+      <span translate="no">Premarket India<small>daily intelligence before the 09:15 open</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <button class="icon-btn nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="/">Dashboard</a>
+        <a class="nav-link" href="/stocks.html">Stocks</a>
+        <a class="nav-link" href="/model.html" aria-current="page">Models</a>
+        <a class="nav-link" href="/methodology.html">Methodology</a>
+        <a class="nav-link" href="/glossary.html">Glossary</a>
+        <a class="nav-link" href="/eli5.html">ELI5</a>
+        <a class="nav-link" href="/privacy.html">Privacy</a>
+        <button class="icon-btn" id="theme-toggle" aria-label="Switch light/dark theme" title="Switch light/dark theme">
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container prose">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Report</a> <span aria-hidden="true">&#8250;</span> Models <span class="read-time" aria-hidden="true">&middot;</span> <span class="read-time">&#8776; 9 min read</span></nav>
+  <h1 style="margin-top:24px">The models</h1>
+  <p class="src">What it is, how it was trained, how it is validated, and where it fails.</p>
+
+  <h2 id="origin">Origin</h2>
+  <p>The forecaster is a faithful implementation of the 3 layer LSTM stock model from the DataCamp tutorial
+  <em>“LSTM Stock Prediction with TensorFlow in Python”</em> (Jaa_smb, September 2019). The tutorial's training code
+  was rebuilt and executed on the exact stack it specifies, Python 3.6 and TensorFlow 1.6, because the model uses
+  <code>tf.contrib.rnn</code>, which does not exist in TensorFlow 2.x. The training environment was compiled from source
+  (OpenSSL 1.1.1w, libffi 3.3, CPython 3.6.15) in this project's sandbox.</p>
+
+  <h2 id="architecture">Architecture</h2>
+  <div class="panel" style="max-width:72ch">
+  <div class="table-wrap"><table class="data">
+    <tbody>
+      <tr><th scope="row">Input</th><td>mid price = (High + Low) / 2, MinMax scaled per 2,500 row window; last fitted window frozen for inference</td></tr>
+      <tr><th scope="row">Cells</th><td>3 stacked <code>tf.contrib.rnn.LSTMCell</code> layers: 200 → 200 → 150 units, Xavier initialized kernels, zero initialized biases, forget bias 1.0 added at run time (TF 1.6 semantics)</td></tr>
+      <tr><th scope="row">Training</th><td>truncated BPTT, 50 unrollings, batch 500, Adam 1e-4 with staircase decay (×0.5), gradient clipping 5.0, dropout 0.8 (train only), 30 epochs, mid epoch validation MSE on the test split</td></tr>
+      <tr><th scope="row">Output head</th><td>dense 150 → 1, trained on one session ahead scaled mid prices</td></tr>
+      <tr><th scope="row">Inference</th><td>JS port of the LSTMCell math; warm start with 49 real observations, predict session <em>t+1</em>, then feed predictions back for a 5 session path (same protocol as the article)</td></tr>
+      <tr><th scope="row">Footprint</th><td>~693k float32 parameters, shipped as a base64 blob (~2.8 MB) and decoded once per cold start; a full 10 step forecast takes 1 to 2 seconds in Node</td></tr>
+    </tbody>
+  </table></div>
+  </div>
+
+  <h2 id="training-data">Training data</h2>
+  <ul>
+    <li><b>NIFTY 50 (^NSEI)</b>: 4,682 daily bars, 17 Sep 2007 to 16 Oct 2026, fetched from the Yahoo Finance chart API.
+      Train/test split at row 4,382, leaving the most recent 300 sessions as a never trained on test region.</li>
+    <li><b>Scaler window</b>: the frozen MinMax scaler covers roughly Aug 2017 → mid 2025, so current index levels sit
+      inside the trained range (a runtime guard flags forecasts if prices ever drift outside it).</li>
+  </ul>
+
+  <h2 id="validation">Validation against the article</h2>
+  <p>The same training script was first run on the article's own dataset, HPQ daily bars 1970 to 2017 (12,076 rows,
+  split 11,000, exactly as published). The result: <b>test MSE 0.00245 at epoch 30, best 0.00231</b>, against the
+  article's reported range of roughly 0.0023 to 0.0025. The dashboard's article exhibit panel renders the TF session's
+  own final epoch predictions for that run, exported directly from TensorFlow, not recomputed in JavaScript.</p>
+  <p>The JavaScript inference engine is validated separately: for each exported model it must reproduce TensorFlow's
+  10 step sampling output for the article's warm start windows within 5×10⁻³ (float64 JS vs float32 TF). The validation
+  harness ships with the project (<code>tools/validate-lstm.mjs</code>).</p>
+
+  <h2 id="backtest">Live backtest protocol</h2>
+  <p>Every daily run computes a rolling backtest over the most recent 10 sessions: for each day the model is
+  warm started on the 49 real observations ending two days prior, predicts one session ahead, and the error and
+  direction hit are recorded. These numbers appear on the dashboard next to the forecast, so the model is judged
+  continuously rather than once.</p>
+
+  <h2 id="limits">Limitations, read before trusting anything</h2>
+  <ul>
+    <li>Multi step paths widen in error quickly. The one session ahead number is the meaningful one; sessions 3 to 5 are directional context only.</li>
+    <li>The model sees only price history (mid prices). It is blind to news, RBI policy, elections and overnight gaps. That is exactly why the four rule based checks, the context panel, and since October 2026 the daily news and earnings layer (headlines, earnings dates and event flags on the dashboard and stocks page) exist alongside it: the world is shown to you, not silently blended into the numbers.</li>
+    <li>Weights are frozen at training time. If NIFTY drifts far outside the scaler range the site flags the forecast as unreliable; the fix is retraining, which is a documented, repeatable procedure in this project.</li>
+    <li>A backtest on 10 sessions is small sample. It is evidence of sanity, not of edge.</li>
+  </ul>
+
+  <div class="callout warn"><b>Not investment advice.</b> This model is research tooling published with full provenance so its
+  claims can be checked. Do not trade on it alone.</div>
+
+  <h2 id="timesfm">Second model: Google TimesFM (offline)</h2>
+  <p>Alongside the LSTM, the project runs <b>TimesFM 2.5 (200M parameters)</b>, Google Research's open source
+  time series foundation model, pretrained on roughly 100 billion time points, as a zero shot second opinion on the same NIFTY
+  series. TimesFM never trains on our data; it forecasts directly from context, which makes it an independent
+  reference: when two very different architectures agree, the forecast carries more weight; when they disagree,
+  that disagreement is itself information.</p>
+  <ul>
+    <li>Checkpoint: <code>google/timesfm-2.5-200m-pytorch</code> via the <code>timesfm</code> PyPI package.</li>
+    <li>Protocol: last 1,024 daily closes as context, input normalization on, positivity inference on; a 5 session
+      forward path and a rolling one session ahead backtest over the same window the LSTM is scored on.</li>
+    <li>Runs offline (the ~800 MB checkpoint does not fit a serverless function); results are published as a static
+      artifact and stamped with their as of date. The dashboard flags the analysis once it goes stale.</li>
+    <li>Refresh procedure is documented in the project README (one venv, one script).</li>
+  </ul>
+  <div class="callout"><b>Why two models?</b> The LSTM is the article's architecture running live in the scan; TimesFM is a
+  foundation model cross check. Neither is assumed correct; the dashboard shows both backtests so you can weigh them yourself.</div>
+
+  <h2 id="ensemble">Third layer: the adaptive ensemble (primary forecast)</h2>
+  <p>The forecast the dashboard leads with is neither model alone. It is a <b>learned blend</b>:</p>
+  <p style="text-align:center"><span class="mono">ensemble(t+1) = w · TimesFM(t+1) + (1−w) · (LSTM(t+1) − bias)</span></p>
+  <p>The weight <b>w</b> and the LSTM's <b>bias</b> correction are not chosen by hand. They are found by grid search offline over a
+  250 session (~1 year) walk forward window in which <i>both</i> models predicted every session one step ahead using only
+  the data that existed beforehand, with no leakage. The parameters that would have minimised RMSE over that year are the ones
+  shipped. On the current window TimesFM dominates, so w lands near 1; the second half of the window leans slightly more on
+  the LSTM than the first half, which is exactly the drift the weight is relearned to track.</p>
+  <p><b>And it keeps learning after deployment.</b> Every 09:00 IST scan records its prediction in a model scorecard
+  (Netlify blobs). When the session prints, the entry is scored against the actual close. Once five sessions have resolved,
+  the <i>live</i> w and bias are relearned from the most recent 30 resolved sessions and used for the next morning's blend.
+  the offline parameters remain the fallback. The dashboard shows both the provenance of the current weight and the recent
+  scorecard rows with each model's error.</p>
+  <ul>
+    <li>Freshness guard: the TimesFM component is only blended while its artifact is ≤5 sessions old; otherwise the report
+      honestly falls back to the bias corrected LSTM and says so on the dashboard.</li>
+    <li>Everything is reported with measured walk forward numbers: no in sample flattery, no fabricated accuracy.</li>
+  </ul>
+
+  <h2 id="per-stock">Per stock forecasts (US, global, India ADRs)</h2>
+  <p>The <a href="/stocks.html">Stocks page</a> applies the same TimesFM checkpoint, zero shot, to ~50 major symbols:
+  US mega caps and sector leaders, SPY/QQQ/DIA benchmark ETFs, global ADRs and Indian ADRs (listed on the NYSE, USD). Each symbol
+  gets a 5 session forward path plus a 10 session one session ahead backtest (direction hit and % RMSE) computed in one
+  batched offline run; the page is searchable and sortable, and every row carries its own as of date. The refresh procedure
+  lives in the README alongside the NIFTY one.</p>
+
+  <h2 id="provenance">Provenance of the shipped artifact</h2>
+  <ul>
+    <li>Training script: the tutorial's pipeline, parameterized only where pandas 1.1.5 / numpy 1.19 required it
+      (<code>.as_matrix()</code> → <code>.values</code>), with an export epilogue added. Deviations documented in the project.</li>
+    <li>Exported artifacts: all trainable variables (<code>multi_rnn_cell/lstm_cell*/kernel|bias</code>, <code>w</code>, <code>b</code>),
+      the frozen scaler min/max, final EMA state, TF reference predictions, and per epoch test MSE.</li>
+    <li>Packed for the web as float32 little endian base64 (<code>tools/pack_model.py</code>), decoded by <code>lib/lstm.mjs</code>.</li>
+  </ul>
+
+  <p><a href="/">← Back to the dashboard</a> · <a href="/methodology.html">Methodology of the daily checks →</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="cols">
+      <div style="flex:2 1 280px">
+        <h2 translate="no">Premarket India</h2>
+        <p style="max-width:44ch;color:var(--text-muted);font-size:13px">
+          Independent research tool. Not a broker, not an advisor.
+          Nothing here is investment advice; markets can move against any signal.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/">Dashboard</a></li>
+          <li><a href="/stocks.html">Stocks</a></li>
+          <li><a href="/model.html">Models</a></li>
+          <li><a href="/search.html">Search</a></li>
+          <li><a href="/glossary.html">Glossary</a></li>
+          <li><a href="/eli5.html">ELI5</a></li>
+          <li><a href="/api/history">API: history index</a></li>
+          <li><a href="/api/latest">API: latest report</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="/privacy.html">Privacy policy</a></li>
+          <li><a href="/methodology.html#sources">Data sources</a></li>
+          <li><a href="/methodology.html#faq">FAQ</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>Data: CNBC and Yahoo Finance (US indices), Yahoo Finance (India VIX, NIFTY history, global context),
+      TradingView (GIFT Nifty), Nasdaq quote API (per stock page). Prices may be delayed. All data is the property of its
+      respective providers; this project displays snapshots for research and does not redistribute datasets.</p>
+      <p>&copy; 2026 Premarket India. Built to run unattended on Netlify Functions and Blobs.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="to-top" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<script src="/assets/chrome.js" defer></script>
+</body>
+</html>

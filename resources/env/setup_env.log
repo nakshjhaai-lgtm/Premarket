@@ -1,0 +1,32 @@
+[18:09:06] building libffi 3.3 (static + shared)
+[18:09:13] libffi 3.3 -> libffi.a libffi.la libffi.so libffi.so.7 libffi.so.7.1.0 pkgconfig 
+[18:09:13] building OpenSSL 1.1.1w (CPython 3.6 cannot use OpenSSL 3.x)
+[18:10:05] OpenSSL -> 
+[18:10:05] building CPython 3.6.15
+[18:10:06] patched mathmodule.c sinpi -> m_sinpi (glibc 2.41 collision)
+[18:11:34] python installed: 3.6.15
+[18:11:34] relinking _ctypes against libffi 3.3
+[18:11:53] _ctypes links: 	libffi.so.7 => /home/user/opt/libffi33/lib/libffi.so.7 (0x00007f857ca38000)
+[18:11:53] ctypes closure test (5x)
+[18:11:53]   ctypes passed 5/5
+[18:11:53] bootstrapping pip 21.3.1 by unzip
+pip 21.3.1 from /home/user/opt/py36/lib/python3.6/site-packages/pip (python 3.6)
+[18:11:54] installing TensorFlow 1.6.0 + tutorial deps (offline)
+[18:12:12] verifying imports
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+python       3.6.15
+tensorflow   1.6.0
+numpy        1.19.5
+pandas       1.1.5
+scikit-learn 0.24.2
+matplotlib   3.3.4
+pandas_datareader.data / MinMaxScaler: OK
+tf.contrib.rnn.* and all tutorial TF 1.6 APIs: OK
+np.asscalar present: True
+DataFrame.as_matrix present: False
+[18:12:14] ENVIRONMENT_READY

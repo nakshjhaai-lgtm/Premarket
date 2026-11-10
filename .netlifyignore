@@ -1,0 +1,7 @@
+# NOTE: this file is read by Netlify git-connected BUILDS, NOT by `netlify deploy`
+# from the CLI (verified in netlify-cli 26.2.0 source). For CLI deploys use
+# `bash tools/deploy.sh`, which stages only the site files.
+resources/
+.claude/
+.ua/tmp/
+.ua/intermediate/

@@ -1,0 +1,56 @@
+{
+ "projectRoot": "/home/user/netlify-premarket",
+ "batchFiles": [
+  {
+   "path": "assets/backtest-decade.json",
+   "language": "json",
+   "sizeLines": 0,
+   "fileCategory": "config"
+  },
+  {
+   "path": "assets/hpq-article.json",
+   "language": "json",
+   "sizeLines": 0,
+   "fileCategory": "config"
+  },
+  {
+   "path": "assets/model-analysis.json",
+   "language": "json",
+   "sizeLines": 0,
+   "fileCategory": "config"
+  },
+  {
+   "path": "assets/search-index.json",
+   "language": "json",
+   "sizeLines": 0,
+   "fileCategory": "config"
+  },
+  {
+   "path": "assets/stock-forecasts.json",
+   "language": "json",
+   "sizeLines": 4658,
+   "fileCategory": "config"
+  },
+  {
+   "path": "assets/stock-history-seed.json",
+   "language": "json",
+   "sizeLines": 0,
+   "fileCategory": "config"
+  },
+  {
+   "path": "assets/styles.css",
+   "language": "css",
+   "sizeLines": 616,
+   "fileCategory": "markup"
+  }
+ ],
+ "batchImportData": {
+  "assets/backtest-decade.json": [],
+  "assets/hpq-article.json": [],
+  "assets/model-analysis.json": [],
+  "assets/search-index.json": [],
+  "assets/stock-forecasts.json": [],
+  "assets/stock-history-seed.json": [],
+  "assets/styles.css": []
+ }
+}

@@ -1,0 +1,182 @@
+{
+ "projectRoot": "/home/user/netlify-premarket",
+ "batchFiles": [
+  {
+   "path": ".netlify/functions/manifest.json",
+   "language": "json",
+   "sizeLines": 0,
+   "fileCategory": "config"
+  },
+  {
+   "path": ".netlify/netlify.toml",
+   "language": "toml",
+   "sizeLines": 64,
+   "fileCategory": "config"
+  },
+  {
+   "path": "assets/app.js",
+   "language": "javascript",
+   "sizeLines": 838,
+   "fileCategory": "code"
+  },
+  {
+   "path": "assets/charts.js",
+   "language": "javascript",
+   "sizeLines": 134,
+   "fileCategory": "code"
+  },
+  {
+   "path": "assets/chrome.js",
+   "language": "javascript",
+   "sizeLines": 47,
+   "fileCategory": "code"
+  },
+  {
+   "path": "assets/glossary-terms.mjs",
+   "language": "javascript",
+   "sizeLines": 361,
+   "fileCategory": "code"
+  },
+  {
+   "path": "assets/glossary-view.js",
+   "language": "javascript",
+   "sizeLines": 105,
+   "fileCategory": "code"
+  },
+  {
+   "path": "assets/search-view.js",
+   "language": "javascript",
+   "sizeLines": 76,
+   "fileCategory": "code"
+  },
+  {
+   "path": "assets/stocks-view.js",
+   "language": "javascript",
+   "sizeLines": 286,
+   "fileCategory": "code"
+  },
+  {
+   "path": "lib/ensemble.mjs",
+   "language": "javascript",
+   "sizeLines": 167,
+   "fileCategory": "code"
+  },
+  {
+   "path": "lib/gbm-model.json",
+   "language": "json",
+   "sizeLines": 0,
+   "fileCategory": "config"
+  },
+  {
+   "path": "lib/lstm.mjs",
+   "language": "javascript",
+   "sizeLines": 161,
+   "fileCategory": "code"
+  },
+  {
+   "path": "lib/model-nifty.mjs",
+   "language": "javascript",
+   "sizeLines": 7,
+   "fileCategory": "code"
+  },
+  {
+   "path": "lib/news-engine.mjs",
+   "language": "javascript",
+   "sizeLines": 196,
+   "fileCategory": "code"
+  },
+  {
+   "path": "lib/scan.mjs",
+   "language": "javascript",
+   "sizeLines": 1052,
+   "fileCategory": "code"
+  },
+  {
+   "path": "lib/stock-features.mjs",
+   "language": "javascript",
+   "sizeLines": 126,
+   "fileCategory": "code"
+  },
+  {
+   "path": "lib/stocks-engine.mjs",
+   "language": "javascript",
+   "sizeLines": 270,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/api-history.mjs",
+   "language": "javascript",
+   "sizeLines": 13,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/api-latest.mjs",
+   "language": "javascript",
+   "sizeLines": 26,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/api-news.mjs",
+   "language": "javascript",
+   "sizeLines": 13,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/api-report.mjs",
+   "language": "javascript",
+   "sizeLines": 22,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/api-scan.mjs",
+   "language": "javascript",
+   "sizeLines": 33,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/api-stocks.mjs",
+   "language": "javascript",
+   "sizeLines": 13,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/daily-scan.mjs",
+   "language": "javascript",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/news-background.mjs",
+   "language": "javascript",
+   "sizeLines": 36,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  ".netlify/functions/manifest.json": [],
+  ".netlify/netlify.toml": [],
+  "assets/app.js": [],
+  "assets/charts.js": [],
+  "assets/chrome.js": [],
+  "assets/glossary-terms.mjs": [],
+  "assets/glossary-view.js": [],
+  "assets/search-view.js": [],
+  "assets/stocks-view.js": [],
+  "lib/ensemble.mjs": [],
+  "lib/gbm-model.json": [],
+  "lib/lstm.mjs": [],
+  "lib/model-nifty.mjs": [],
+  "lib/news-engine.mjs": [],
+  "lib/scan.mjs": [],
+  "lib/stock-features.mjs": [],
+  "lib/stocks-engine.mjs": [],
+  "netlify/functions/api-history.mjs": [],
+  "netlify/functions/api-latest.mjs": [],
+  "netlify/functions/api-news.mjs": [],
+  "netlify/functions/api-report.mjs": [],
+  "netlify/functions/api-scan.mjs": [],
+  "netlify/functions/api-stocks.mjs": [],
+  "netlify/functions/daily-scan.mjs": [],
+  "netlify/functions/news-background.mjs": []
+ }
+}

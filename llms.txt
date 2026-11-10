@@ -1,0 +1,95 @@
+# Premarket India
+
+> A daily automated premarket intelligence report for Indian equity traders,
+> generated at 09:00 IST (before the 09:15 NSE open) by Netlify scheduled
+> functions. No accounts, no tracking. Not investment advice.
+
+## What it publishes
+
+- Decision framework (roles, not equal votes): GIFT Nifty's implied gap sets
+  the opening bias (size aware: neutral under 0.15%, modest under 0.5%,
+  strong at 0.5% or more); global cues (US close, live US futures, Asia) are
+  context; the NSE pre open session (09:00 to 09:15 IST) cross confirms;
+  advances and declines confirm the trend after the open; India VIX is a risk
+  gauge against its own 1 year percentile, never a direction call. Conflicting
+  signals are reported as conflicts, not forced conclusions.
+- Implied open: GIFT Nifty vs NIFTY 50 previous close (with a futures basis caveat).
+- Market context: crude oil (WTI and Brent), gold, USD INR, the US 10 year
+  yield, Nikkei 225 and Hang Seng, each with a threshold based plain language
+  read and a 5 day sparkline.
+- Adaptive ensemble forecast (primary): a learned blend of TimesFM 2.5 and the
+  live LSTM, w times TimesFM plus (1 minus w) times the bias corrected LSTM.
+  The weight and bias are learned on a 250 session walk forward window
+  (no leakage) and relearned daily from a live scorecard of resolved
+  predictions. Component forecasts and provenance are shown with every report.
+- LSTM forecast: a 3 layer LSTM (200 200 150, TensorFlow 1.6 semantics,
+  trained on NIFTY 50 daily bars 2007 to 2026) predicting the next session's
+  mid price and a 5 session fed back path, with a rolling 10 session backtest
+  (RMSE and direction hit rate) recomputed on every run.
+- TimesFM second opinion: Google's timesfm 2.5 (200M parameter) foundation
+  model, zero shot, evaluated on the same walk forward window (offline
+  artifact, stamped with its as of date).
+- Per stock forecasts: TimesFM, zero shot, for 50 major symbols (US mega caps,
+  sector leaders, SPY QQQ DIA ETFs, global ADRs, Indian ADRs), each with a 10
+  session one session ahead backtest. Offline artifact at
+  /assets/stock-forecasts.json, searchable and sortable on /stocks.html.
+- Post open confirmation: a 09:20 IST pass records the actual open, price vs
+  open, live breadth and live VIX, appended to the day's report.
+- Data fallbacks: every source has an alternate where one exists, plus a last
+  good cache with a per source freshness limit. Switching is automatic and the
+  report discloses which state each source is in (live, cached with age, or
+  degraded). Unavailable is always shown as unavailable, never guessed.
+- Archive: every run is stored; up to 400 days of history.
+
+## API
+
+- GET /api/latest: newest report (JSON)
+- GET /api/history: index of saved dates
+- GET /api/report?date=YYYY-MM-DD&format=json|md|html: any archived report
+- GET or POST /api/scan: trigger a scan (rate limited to 1 per 2 minutes)
+
+## Per stock adaptive forecasts
+Every stock forecast on /stocks.html comes from a gradient boosted tree model
+trained on a decade of daily data (2016 to 2026) with market and sector
+context (SPY, QQQ, VIX, sector ETFs). Each stock then learns daily from its
+own results: per stock bias correction, recalibrated 80 percent prediction
+band, and a blend weight with the TimesFM artifact. Predictions are resolved
+against actual closes automatically at 09:10 IST Monday to Saturday. Honest
+scoring: next session direction sits near 50 to 53 percent out of sample,
+matching public research; band coverage is calibrated to 80 percent. The year
+by year walk forward table is published on the page. Live data:
+GET /api/stocks (JSON).
+
+## News, earnings and event flags
+A separate 08:40 IST cycle collects market headlines (CNBC, Google News; United
+States and India), per stock headlines for all 50 symbols and the next ten days
+of earnings dates (Nasdaq calendar). Headlines are keyword tagged (earnings,
+merger, lawsuit, regulator, rates, inflation, geopolitics, election, cyber,
+recall, accident) and daily per stock headline counts are recorded, so bursts
+are flagged as heavy news. This layer is deliberately outside the forecast
+models and is labeled as such: news is displayed for the reader to weigh.
+Live data: GET /api/news (JSON).
+
+## Framework track record
+The daily opening bias call is checked against the actual open after the bell
+and the rolling hit rate is displayed on the dashboard.
+
+## Pages
+
+- /: dashboard (today's report)
+- /stocks.html: per stock TimesFM forecasts, searchable and sortable
+- /search.html: one search box over every page and all 95 glossary terms (runs locally in the browser)
+- /model.html: LSTM architecture, training, validation, TimesFM, the ensemble, limitations
+- /methodology.html: checks, framework steps, sources, interpretation thresholds, FAQ
+- /glossary.html: every term used on this site, defined in plain language, searchable, with cross links
+- /eli5.html: the whole site explained in the simplest possible words
+- /privacy.html: privacy policy (no cookies, no analytics)
+
+## Writing policy
+
+- All site copy follows plain language rules: no dashes as punctuation, no
+  hyphenated compounds in prose, no filler or promotional words.
+- Every number is measured and timestamped; accuracy claims come only from
+  walk forward backtests; limitations are stated next to every forecast.
+- Every technical term is either explained where it appears or linked to
+  /glossary.html.

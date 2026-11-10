@@ -1,0 +1,1109 @@
+{
+ "batchFiles": [],
+ "nodes": [
+  {
+   "id": "file:assets/app.js",
+   "type": "file",
+   "name": "Dashboard controller",
+   "filePath": "assets/app.js",
+   "summary": "The dashboard brain: theme handling, report loading and rendering (bias, checks, context, prediction, news panel, archive), glossary term auto linking, the copy report button and the run scan button. Imports chart builders and the linkable glossary terms.",
+   "tags": [
+    "frontend",
+    "dashboard",
+    "rendering"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:assets/charts.js",
+   "type": "file",
+   "name": "Chart builders",
+   "filePath": "assets/charts.js",
+   "summary": "Dependency free SVG chart builders: lineChart (multi series with axes and legend), sparkline (tiny inline series) and breadthBar (advance decline bar). Pure functions returning SVG markup.",
+   "tags": [
+    "frontend",
+    "charts",
+    "svg"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:assets/chrome.js",
+   "type": "file",
+   "name": "Shared page chrome",
+   "filePath": "assets/chrome.js",
+   "summary": "Theme toggle with persistence and prefers-color-scheme, scroll progress bar, header shadow, back to top button, mobile nav disclosure and the 404 missing path fill. Loaded by every page except the dashboard (app.js owns its own chrome).",
+   "tags": [
+    "frontend",
+    "chrome"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:assets/glossary-terms.mjs",
+   "type": "file",
+   "name": "Glossary term data",
+   "filePath": "assets/glossary-terms.mjs",
+   "summary": "The 95 term dataset (id, term, short definition, plain words line, category, cross links) plus LINKABLE, the map of phrases that pages auto link to glossary anchors.",
+   "tags": [
+    "data",
+    "glossary"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:assets/glossary-view.js",
+   "type": "file",
+   "name": "Glossary viewer",
+   "filePath": "assets/glossary-view.js",
+   "summary": "Renders the term list with search, category filters, the A to Z index and anchored entries; highlights search matches and flashes deep linked entries.",
+   "tags": [
+    "frontend",
+    "glossary"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:assets/search-view.js",
+   "type": "file",
+   "name": "Site search viewer",
+   "filePath": "assets/search-view.js",
+   "summary": "Fetches search-index.json, matches every whitespace separated term, ranks by hit count, renders up to 20 results with snippets and an aria-live result count. Focuses the box on fine pointer devices only.",
+   "tags": [
+    "frontend",
+    "search"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:assets/stocks-view.js",
+   "type": "file",
+   "name": "Stocks page viewer",
+   "filePath": "assets/stocks-view.js",
+   "summary": "Renders the live adaptive table (sortable columns, region filter chips, search), the events and news column with earnings chips, the decade backtest section and the offline TimesFM table. Binds all interactions.",
+   "tags": [
+    "frontend",
+    "stocks",
+    "table"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:lib/ensemble.mjs",
+   "type": "file",
+   "name": "Adaptive ensemble",
+   "filePath": "lib/ensemble.mjs",
+   "summary": "The NIFTY primary forecast: TimesFM artifact loading, artifact freshness, next trading day math, the learned weight blend w*TF+(1-w)*(LSTM-bias), the framework scorecard persistence and daily weight relearning from resolved outcomes.",
+   "tags": [
+    "engine",
+    "ensemble",
+    "learning"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "resource:lib/gbm-model.json",
+   "type": "resource",
+   "name": "GBM tree model",
+   "filePath": "lib/gbm-model.json",
+   "summary": "The LightGBM dump_model export (trees, thresholds, leaf values) for the pooled direction model; evaluated in JS by gbmPredict with full precision thresholds.",
+   "tags": [
+    "data",
+    "gbm",
+    "model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:lib/lstm.mjs",
+   "type": "file",
+   "name": "LSTM runtime",
+   "filePath": "lib/lstm.mjs",
+   "summary": "A faithful JavaScript port of the TensorFlow 1.6 LSTMCell math (3 stacked layers, 200/200/150 units) with a decoder for the base64 packed weights and a 5 session recursive forecaster. Runs in Node functions and could run in the browser.",
+   "tags": [
+    "engine",
+    "lstm",
+    "model"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:lib/model-nifty.mjs",
+   "type": "file",
+   "name": "Packed NIFTY model",
+   "filePath": "lib/model-nifty.mjs",
+   "summary": "The trained NIFTY LSTM weights shipped as a base64 blob (~693k float32 parameters) plus the frozen scaler window; decoded once per cold start.",
+   "tags": [
+    "engine",
+    "lstm",
+    "weights"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:lib/news-engine.mjs",
+   "type": "file",
+   "name": "News and events engine",
+   "filePath": "lib/news-engine.mjs",
+   "summary": "The 08:40 IST cycle: CNBC and Google News RSS fetching and regex parsing, per symbol feeds with pacing, the Nasdaq earnings calendar (10 weekdays), keyword event tags, heavy news detection against a trailing 14 day average and the news-history blob accounting.",
+   "tags": [
+    "engine",
+    "news",
+    "events"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:lib/scan.mjs",
+   "type": "file",
+   "name": "Pre-market scan engine",
+   "filePath": "lib/scan.mjs",
+   "summary": "The heart of the daily report: IST clock helpers, the four source checks (US indices, India VIX, NIFTY breadth, GIFT Nifty), market context (oil, gold, rates, FX, Asia), the role based framework v2 verdict, LSTM forecast integration and the markdown/HTML serialization of the report.",
+   "tags": [
+    "engine",
+    "scan",
+    "framework"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:lib/stock-features.mjs",
+   "type": "file",
+   "name": "Stock feature math",
+   "filePath": "lib/stock-features.mjs",
+   "summary": "Feature engineering for the per stock models: date bisect, percent change, population std, RSI-14, the 26 feature row builder, the walk-forward splitter and the exported GBM tree prediction (dump_model port from LightGBM).",
+   "tags": [
+    "engine",
+    "features",
+    "gbm"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:lib/stocks-engine.mjs",
+   "type": "file",
+   "name": "Per stock adaptive engine",
+   "filePath": "lib/stocks-engine.mjs",
+   "summary": "The 50 symbol ecosystem: STOCKS list, incremental Nasdaq history pulls, per stock state (bias, band, blend weight), prediction resolution against real closes, daily relearning, the calibrated 80 percent band and the stocks-live view assembly.",
+   "tags": [
+    "engine",
+    "stocks",
+    "learning"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:netlify/functions/api-history.mjs",
+   "type": "file",
+   "name": "api-history endpoint",
+   "filePath": "netlify/functions/api-history.mjs",
+   "summary": "GET /api/history: lists every saved report date from the reports/ blob prefix for the archive UI.",
+   "tags": [
+    "function",
+    "api"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:netlify/functions/api-latest.mjs",
+   "type": "file",
+   "name": "api-latest endpoint",
+   "filePath": "netlify/functions/api-latest.mjs",
+   "summary": "GET /api/latest: serves the stored latest report JSON from blobs (no-store) with a small in-memory cache.",
+   "tags": [
+    "function",
+    "api"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:netlify/functions/api-news.mjs",
+   "type": "file",
+   "name": "api-news endpoint",
+   "filePath": "netlify/functions/api-news.mjs",
+   "summary": "GET /api/news: serves the latest news cycle view (market and India headlines, per symbol feeds, earnings, tags, heavy flags).",
+   "tags": [
+    "function",
+    "api"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:netlify/functions/api-report.mjs",
+   "type": "file",
+   "name": "api-report endpoint",
+   "filePath": "netlify/functions/api-report.mjs",
+   "summary": "GET /api/report?date=YYYY-MM-DD: serves one archived report (JSON, markdown or HTML by extension).",
+   "tags": [
+    "function",
+    "api"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:netlify/functions/api-scan.mjs",
+   "type": "file",
+   "name": "api-scan endpoint",
+   "filePath": "netlify/functions/api-scan.mjs",
+   "summary": "POST /api/scan: the run-scan-now button behind the 2 minute blob throttle; forwards to scan-background with the manual trigger header.",
+   "tags": [
+    "function",
+    "api",
+    "guarded"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:netlify/functions/api-stocks.mjs",
+   "type": "file",
+   "name": "api-stocks endpoint",
+   "filePath": "netlify/functions/api-stocks.mjs",
+   "summary": "GET /api/stocks: serves the stocks-live view (50 predictions, per stock learning state, aggregate stats, artifact freshness).",
+   "tags": [
+    "function",
+    "api"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:netlify/functions/daily-scan.mjs",
+   "type": "file",
+   "name": "daily-scan stub",
+   "filePath": "netlify/functions/daily-scan.mjs",
+   "summary": "Scheduled 03:30 UTC (09:00 IST, Mon-Fri). Hands the full scan to scan-background with the daily-schedule trigger header; scheduled functions have a 30s cap so the work must move to a background function.",
+   "tags": [
+    "function",
+    "schedule",
+    "stub"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:netlify/functions/news-background.mjs",
+   "type": "file",
+   "name": "news-background worker",
+   "filePath": "netlify/functions/news-background.mjs",
+   "summary": "Runs the full news cycle (market + India headlines, 50 per symbol feeds, earnings calendar). Public invocations are throttled to one run per 30 minutes by the last-news-run blob guard; scheduled runs always pass.",
+   "tags": [
+    "function",
+    "background",
+    "worker"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/scan.mjs:runScan",
+   "type": "function",
+   "name": "runScan",
+   "filePath": "lib/scan.mjs",
+   "summary": "Fetches all four checks plus context, applies the role framework, attaches the LSTM forecast and returns the full report object.",
+   "tags": [
+    "engine",
+    "framework"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:lib/scan.mjs:istNow",
+   "type": "function",
+   "name": "istNow",
+   "filePath": "lib/scan.mjs",
+   "summary": "IST clock: current date, time, weekend flag and session awareness for the scheduler and the report.",
+   "tags": [
+    "time"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:lib/scan.mjs:usIndices",
+   "type": "function",
+   "name": "usIndices",
+   "filePath": "lib/scan.mjs",
+   "summary": "Overnight US index closes (S&P, Nasdaq, Dow) with change percents from Yahoo/CNBC with fallbacks.",
+   "tags": [
+    "data",
+    "source"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/scan.mjs:indiaVix",
+   "type": "function",
+   "name": "indiaVix",
+   "filePath": "lib/scan.mjs",
+   "summary": "India VIX level and its 10 day percentile, the fear gauge check.",
+   "tags": [
+    "data",
+    "source"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/scan.mjs:advanceDecline",
+   "type": "function",
+   "name": "advanceDecline",
+   "filePath": "lib/scan.mjs",
+   "summary": "NIFTY 50 breadth: advancers vs decliners, the participation check.",
+   "tags": [
+    "data",
+    "source"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/scan.mjs:giftNifty",
+   "type": "function",
+   "name": "giftNifty",
+   "filePath": "lib/scan.mjs",
+   "summary": "GIFT Nifty implied open scraped from TradingView; drives the readiness call.",
+   "tags": [
+    "data",
+    "source"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/scan.mjs:frameworkVerdict",
+   "type": "function",
+   "name": "frameworkVerdict",
+   "filePath": "lib/scan.mjs",
+   "summary": "Role based framework v2: weighs each check's role and state into the overall bias classification (Positive large to Negative large, Neutral or Conflicting).",
+   "tags": [
+    "engine",
+    "framework"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:lib/scan.mjs:toMarkdown",
+   "type": "function",
+   "name": "toMarkdown",
+   "filePath": "lib/scan.mjs",
+   "summary": "Serializes the report to the plain markdown archive format.",
+   "tags": [
+    "serialize"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/ensemble.mjs:ensembleView",
+   "type": "function",
+   "name": "ensembleView",
+   "filePath": "lib/ensemble.mjs",
+   "summary": "Blends TimesFM and the bias corrected LSTM with the learned weight and produces the forecast panel view.",
+   "tags": [
+    "engine",
+    "ensemble"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:lib/ensemble.mjs:updateScorecard",
+   "type": "function",
+   "name": "updateScorecard",
+   "filePath": "lib/ensemble.mjs",
+   "summary": "Records each resolved forecast outcome and relearns the blend weight daily once at least 5 outcomes exist.",
+   "tags": [
+    "engine",
+    "learning"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/ensemble.mjs:nextTradingDays",
+   "type": "function",
+   "name": "nextTradingDays",
+   "filePath": "lib/ensemble.mjs",
+   "summary": "Trading day calendar skipping weekends only, used for forecast horizons.",
+   "tags": [
+    "time"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:lib/lstm.mjs:decodePackedModel",
+   "type": "function",
+   "name": "decodePackedModel",
+   "filePath": "lib/lstm.mjs",
+   "summary": "Decodes the base64 packed weights (Little Endian float32) into layer matrices for inference.",
+   "tags": [
+    "lstm",
+    "decode"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/lstm.mjs:LstmForecaster",
+   "type": "function",
+   "name": "LstmForecaster",
+   "filePath": "lib/lstm.mjs",
+   "summary": "The recursive forecaster: warm starts with 49 real observations, predicts t+1, feeds predictions forward for the 5 session path.",
+   "tags": [
+    "lstm",
+    "forecast"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:lib/lstm.mjs:LstmCell",
+   "type": "function",
+   "name": "LstmCell",
+   "filePath": "lib/lstm.mjs",
+   "summary": "One LSTM cell step: input/forget/output gates with peephole free TF 1.6 semantics and clipped internal state.",
+   "tags": [
+    "lstm",
+    "math"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/stocks-engine.mjs:runAdaptiveCycle",
+   "type": "function",
+   "name": "runAdaptiveCycle",
+   "filePath": "lib/stocks-engine.mjs",
+   "summary": "One full learning cycle: pull new closes, resolve pending predictions, relearn per stock bias/band/blend, emit next forecasts.",
+   "tags": [
+    "engine",
+    "learning"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:lib/stocks-engine.mjs:newState",
+   "type": "function",
+   "name": "newState",
+   "filePath": "lib/stocks-engine.mjs",
+   "summary": "Initializes per stock state including the VIX history the feature row needs (a past bug forgot it).",
+   "tags": [
+    "engine",
+    "state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:lib/stocks-engine.mjs:fetchNewRows",
+   "type": "function",
+   "name": "fetchNewRows",
+   "filePath": "lib/stocks-engine.mjs",
+   "summary": "Incremental Nasdaq quote API pulls with 1.1s pacing and newest-first row parsing.",
+   "tags": [
+    "data",
+    "source"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/news-engine.mjs:runNewsCycle",
+   "type": "function",
+   "name": "runNewsCycle",
+   "filePath": "lib/news-engine.mjs",
+   "summary": "The whole 08:40 cycle: market and India headlines, 50 paced per symbol feeds, the earnings calendar, tags, heavy flags and history accounting.",
+   "tags": [
+    "engine",
+    "news"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:lib/news-engine.mjs:parseRss",
+   "type": "function",
+   "name": "parseRss",
+   "filePath": "lib/news-engine.mjs",
+   "summary": "Regex RSS/Atom parser extracting titles, links and dates without an XML dependency.",
+   "tags": [
+    "parse"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/news-engine.mjs:fetchEarnings",
+   "type": "function",
+   "name": "fetchEarnings",
+   "filePath": "lib/news-engine.mjs",
+   "summary": "Nasdaq earnings calendar walker for the next 10 weekdays with per request pacing.",
+   "tags": [
+    "data",
+    "source"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/news-engine.mjs:tagHeadline",
+   "type": "function",
+   "name": "tagHeadline",
+   "filePath": "lib/news-engine.mjs",
+   "summary": "Keyword matcher that tags headlines (rates, earnings, geopolitics, guidance, accident) using the TAGS table.",
+   "tags": [
+    "parse",
+    "tags"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:lib/stock-features.mjs:featureRow",
+   "type": "function",
+   "name": "featureRow",
+   "filePath": "lib/stock-features.mjs",
+   "summary": "Builds the 26 features (returns, RSI, vol regimes, VIX percentile) for one symbol and day.",
+   "tags": [
+    "features"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:lib/stock-features.mjs:gbmPredict",
+   "type": "function",
+   "name": "gbmPredict",
+   "filePath": "lib/stock-features.mjs",
+   "summary": "Evaluates the exported LightGBM trees in JS with full precision thresholds; regression starts at 0.",
+   "tags": [
+    "gbm",
+    "predict"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:assets/app.js:loadReport",
+   "type": "function",
+   "name": "loadReport",
+   "filePath": "assets/app.js",
+   "summary": "Fetches /api/latest (or an archived date), renders every dashboard panel and wires glossary term links.",
+   "tags": [
+    "rendering"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:assets/app.js:renderNews",
+   "type": "function",
+   "name": "renderNews",
+   "filePath": "assets/app.js",
+   "summary": "Renders the news panel: earnings chips with estimates, heavy news flags, US and India headline lists and the honest display-only note.",
+   "tags": [
+    "rendering",
+    "news"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:assets/app.js:plainWords",
+   "type": "function",
+   "name": "plainWords",
+   "filePath": "assets/app.js",
+   "summary": "The one box a first time visitor reads: today's call in one sentence with the model number and its honest caveat.",
+   "tags": [
+    "rendering",
+    "ux"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:assets/app.js:linkGlossaryTerms",
+   "type": "function",
+   "name": "linkGlossaryTerms",
+   "filePath": "assets/app.js",
+   "summary": "Auto links known jargon phrases in rendered text to their glossary anchors.",
+   "tags": [
+    "rendering",
+    "glossary"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:assets/app.js:initTheme",
+   "type": "function",
+   "name": "initTheme",
+   "filePath": "assets/app.js",
+   "summary": "Theme bootstrap and toggle with localStorage persistence and theme-color meta sync.",
+   "tags": [
+    "chrome",
+    "theme"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:assets/charts.js:lineChart",
+   "type": "function",
+   "name": "lineChart",
+   "filePath": "assets/charts.js",
+   "summary": "Multi series SVG line chart with axes, nice ticks, legend and the fixed Okabe-Ito palette.",
+   "tags": [
+    "charts"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:assets/stocks-view.js:loadLive",
+   "type": "function",
+   "name": "loadLive",
+   "filePath": "assets/stocks-view.js",
+   "summary": "Fetches /api/stocks and /api/news in parallel and renders the live table with the events column.",
+   "tags": [
+    "rendering",
+    "stocks"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:assets/stocks-view.js:bindLiveSort",
+   "type": "function",
+   "name": "bindLiveSort",
+   "filePath": "assets/stocks-view.js",
+   "summary": "Wires the sortable headers: click flips direction, re-renders tbody and thead and rebinds.",
+   "tags": [
+    "rendering",
+    "table"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:lib/lstm.mjs:LstmForecaster",
+   "type": "class",
+   "name": "LstmForecaster",
+   "filePath": "lib/lstm.mjs",
+   "summary": "Recursive 5 session forecaster around the ported cell stack.",
+   "tags": [
+    "lstm"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:lib/lstm.mjs:LstmCell",
+   "type": "class",
+   "name": "LstmCell",
+   "filePath": "lib/lstm.mjs",
+   "summary": "Single LSTM cell step with TF 1.6 gate semantics.",
+   "tags": [
+    "lstm"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:netlify/functions/news-background.mjs:default",
+   "type": "function",
+   "name": "default handler",
+   "filePath": "netlify/functions/news-background.mjs",
+   "summary": "The function entrypoint: guards, then runs the cycle and stores the result.",
+   "tags": [
+    "entrypoint"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:assets/app.js",
+   "target": "file:assets/charts.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:assets/app.js",
+   "target": "file:assets/glossary-terms.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:assets/glossary-view.js",
+   "target": "file:assets/glossary-terms.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:netlify/functions/news-background.mjs",
+   "target": "file:lib/news-engine.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:netlify/functions/news-background.mjs",
+   "target": "file:lib/stocks-engine.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:lib/ensemble.mjs",
+   "target": "file:lib/lstm.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:lib/ensemble.mjs",
+   "target": "file:lib/model-nifty.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:lib/stocks-engine.mjs",
+   "target": "file:lib/stock-features.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:lib/stocks-engine.mjs",
+   "target": "resource:lib/gbm-model.json",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:lib/stocks-engine.mjs",
+   "target": "resource:assets/stock-history-seed.json",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:netlify/functions/daily-scan.mjs",
+   "target": "file:netlify/functions/scan-background.mjs",
+   "type": "triggers",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:netlify/functions/api-scan.mjs",
+   "target": "file:netlify/functions/scan-background.mjs",
+   "type": "triggers",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:netlify/functions/api-latest.mjs",
+   "target": "file:index.html",
+   "type": "serves",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:netlify/functions/api-news.mjs",
+   "target": "file:index.html",
+   "type": "serves",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:netlify/functions/api-history.mjs",
+   "target": "file:index.html",
+   "type": "serves",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:netlify/functions/api-report.mjs",
+   "target": "file:index.html",
+   "type": "serves",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:netlify/functions/api-stocks.mjs",
+   "target": "file:stocks.html",
+   "type": "serves",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:netlify/functions/api-news.mjs",
+   "target": "file:stocks.html",
+   "type": "serves",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:lib/scan.mjs",
+   "target": "function:lib/scan.mjs:runScan",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/scan.mjs",
+   "target": "function:lib/scan.mjs:istNow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/scan.mjs",
+   "target": "function:lib/scan.mjs:usIndices",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/scan.mjs",
+   "target": "function:lib/scan.mjs:indiaVix",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/scan.mjs",
+   "target": "function:lib/scan.mjs:advanceDecline",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/scan.mjs",
+   "target": "function:lib/scan.mjs:giftNifty",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/scan.mjs",
+   "target": "function:lib/scan.mjs:frameworkVerdict",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/scan.mjs",
+   "target": "function:lib/scan.mjs:toMarkdown",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/ensemble.mjs",
+   "target": "function:lib/ensemble.mjs:ensembleView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/ensemble.mjs",
+   "target": "function:lib/ensemble.mjs:updateScorecard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/ensemble.mjs",
+   "target": "function:lib/ensemble.mjs:nextTradingDays",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/lstm.mjs",
+   "target": "function:lib/lstm.mjs:decodePackedModel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/lstm.mjs",
+   "target": "function:lib/lstm.mjs:LstmForecaster",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/lstm.mjs",
+   "target": "function:lib/lstm.mjs:LstmCell",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/stocks-engine.mjs",
+   "target": "function:lib/stocks-engine.mjs:runAdaptiveCycle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/stocks-engine.mjs",
+   "target": "function:lib/stocks-engine.mjs:newState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/stocks-engine.mjs",
+   "target": "function:lib/stocks-engine.mjs:fetchNewRows",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/news-engine.mjs",
+   "target": "function:lib/news-engine.mjs:runNewsCycle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/news-engine.mjs",
+   "target": "function:lib/news-engine.mjs:parseRss",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/news-engine.mjs",
+   "target": "function:lib/news-engine.mjs:fetchEarnings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/news-engine.mjs",
+   "target": "function:lib/news-engine.mjs:tagHeadline",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/stock-features.mjs",
+   "target": "function:lib/stock-features.mjs:featureRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/stock-features.mjs",
+   "target": "function:lib/stock-features.mjs:gbmPredict",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:assets/app.js",
+   "target": "function:assets/app.js:loadReport",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:assets/app.js",
+   "target": "function:assets/app.js:renderNews",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:assets/app.js",
+   "target": "function:assets/app.js:plainWords",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:assets/app.js",
+   "target": "function:assets/app.js:linkGlossaryTerms",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:assets/app.js",
+   "target": "function:assets/app.js:initTheme",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:assets/charts.js",
+   "target": "function:assets/charts.js:lineChart",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:assets/stocks-view.js",
+   "target": "function:assets/stocks-view.js:loadLive",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:assets/stocks-view.js",
+   "target": "function:assets/stocks-view.js:bindLiveSort",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/lstm.mjs",
+   "target": "class:lib/lstm.mjs:LstmForecaster",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:lib/lstm.mjs",
+   "target": "class:lib/lstm.mjs:LstmCell",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:netlify/functions/news-background.mjs",
+   "target": "function:lib/news-engine.mjs:runNewsCycle",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "function:lib/ensemble.mjs:ensembleView",
+   "target": "function:lib/lstm.mjs:LstmForecaster",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "function:assets/app.js:loadReport",
+   "target": "function:assets/app.js:renderNews",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "function:assets/app.js:loadReport",
+   "target": "function:assets/app.js:plainWords",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "function:assets/app.js:loadReport",
+   "target": "function:assets/app.js:linkGlossaryTerms",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "function:lib/stocks-engine.mjs:runAdaptiveCycle",
+   "target": "function:lib/stock-features.mjs:featureRow",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "function:lib/stocks-engine.mjs:runAdaptiveCycle",
+   "target": "function:lib/stock-features.mjs:gbmPredict",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:netlify/functions/news-background.mjs",
+   "target": "function:netlify/functions/news-background.mjs:default",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  }
+ ],
+ "notes": "Authored by the project author as the file-analyzer agent (Understand-Anything Phase 2)."
+}

@@ -1,0 +1,126 @@
+{
+ "projectRoot": "/home/user/netlify-premarket",
+ "batchFiles": [
+  {
+   "path": "404.html",
+   "language": "html",
+   "sizeLines": 73,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "COMPLIANCE.md",
+   "language": "markdown",
+   "sizeLines": 187,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "README.md",
+   "language": "markdown",
+   "sizeLines": 285,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "eli5.html",
+   "language": "html",
+   "sizeLines": 204,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "glossary.html",
+   "language": "html",
+   "sizeLines": 131,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "index.html",
+   "language": "html",
+   "sizeLines": 221,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "llms.txt",
+   "language": "txt",
+   "sizeLines": 95,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "methodology.html",
+   "language": "html",
+   "sizeLines": 306,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "model.html",
+   "language": "html",
+   "sizeLines": 227,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "netlify.toml",
+   "language": "toml",
+   "sizeLines": 47,
+   "fileCategory": "config"
+  },
+  {
+   "path": "package.json",
+   "language": "json",
+   "sizeLines": 11,
+   "fileCategory": "config"
+  },
+  {
+   "path": "privacy.html",
+   "language": "html",
+   "sizeLines": 138,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "robots.txt",
+   "language": "txt",
+   "sizeLines": 4,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "search.html",
+   "language": "html",
+   "sizeLines": 125,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "sitemap.xml",
+   "language": "xml",
+   "sizeLines": 48,
+   "fileCategory": "config"
+  },
+  {
+   "path": "skills-lock.json",
+   "language": "json",
+   "sizeLines": 59,
+   "fileCategory": "config"
+  },
+  {
+   "path": "stocks.html",
+   "language": "html",
+   "sizeLines": 153,
+   "fileCategory": "markup"
+  }
+ ],
+ "batchImportData": {
+  "404.html": [],
+  "COMPLIANCE.md": [],
+  "README.md": [],
+  "eli5.html": [],
+  "glossary.html": [],
+  "index.html": [],
+  "llms.txt": [],
+  "methodology.html": [],
+  "model.html": [],
+  "netlify.toml": [],
+  "package.json": [],
+  "privacy.html": [],
+  "robots.txt": [],
+  "search.html": [],
+  "sitemap.xml": [],
+  "skills-lock.json": [],
+  "stocks.html": []
+ }
+}

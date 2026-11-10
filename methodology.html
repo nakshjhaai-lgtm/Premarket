@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology: the decision framework, sources and FAQ | Premarket India</title>
+<meta name="description" content="How the daily premarket framework works: GIFT Nifty opening bias, global cues, the NSE pre open cross check, post open breadth confirmation, VIX risk percentiles, data sources and honest FAQs.">
+<link rel="canonical" href="https://premarket-india-report.netlify.app/methodology.html">
+<meta name="theme-color" content="#f5f6f8">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="India Premarket Intelligence">
+<meta property="og:title" content="Methodology, sources & FAQ">
+<meta property="og:url" content="https://premarket-india-report.netlify.app/methodology.html">
+<meta property="og:image" content="https://premarket-india-report.netlify.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/assets/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "When is the report generated?",
+      "acceptedAnswer": { "@type": "Answer", "text": "At 09:00 IST on every weekday, automatically, by a scheduled cloud function. It finishes well before the 09:15 NSE open. You can also trigger a manual scan from the dashboard at any time (rate limited to one run per two minutes)." } },
+    { "@type": "Question", "name": "What happens on weekends and holidays?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The schedule skips Saturday and Sunday in IST. Indian exchange holidays are not in the calendar, so on a holiday the scan still runs and simply reports the latest available (previous session) values, clearly labelled with their session dates." } },
+    { "@type": "Question", "name": "Why do some checks show 'unavailable'?",
+      "acceptedAnswer": { "@type": "Answer", "text": "When a data source fails or is blocked from the cloud environment, the check is marked unavailable and excluded from the score. The tool never substitutes a guess for missing data." } },
+    { "@type": "Question", "name": "Is this investment advice?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. It is research tooling that shows what public data said before the open, with sources and timestamps. Markets can move against any signal." } },
+    { "@type": "Question", "name": "Where does the data come from?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CNBC quote API for US indices, Yahoo Finance for India VIX, NIFTY history and global context, NSE India for advance/decline breadth, and TradingView for GIFT Nifty. Every row on the dashboard names its source." } }
+  ]
+}
+</script>
+<noscript><style>@media (max-width:919px){.nav-links{display:flex!important;flex-wrap:wrap}.nav-toggle{display:none!important}}</style></noscript>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="India Premarket Intelligence, home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#0e6e78"/>
+        <path d="M6 22 L12 14 L16 18 L22 8 L26 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="22" cy="8" r="2.4" fill="#fff"/>
+      </svg>
+      <span translate="no">Premarket India<small>daily intelligence before the 09:15 open</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <button class="icon-btn nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="/">Dashboard</a>
+        <a class="nav-link" href="/stocks.html">Stocks</a>
+        <a class="nav-link" href="/model.html">Models</a>
+        <a class="nav-link" href="/glossary.html">Glossary</a>
+        <a class="nav-link" href="/eli5.html">ELI5</a>
+        <a class="nav-link" href="/methodology.html" aria-current="page">Methodology</a>
+        <a class="nav-link" href="/privacy.html">Privacy</a>
+        <button class="icon-btn" id="theme-toggle" aria-label="Switch light/dark theme" title="Switch light/dark theme">
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container prose">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Report</a> <span aria-hidden="true">&#8250;</span> Methodology <span class="read-time" aria-hidden="true">&middot;</span> <span class="read-time">&#8776; 11 min read</span></nav>
+  <h1 style="margin-top:24px">Methodology</h1>
+  <p class="src">Everything the dashboard shows, and how it is produced.</p>
+
+  <h2 id="schedule">Schedule</h2>
+  <p>Four scheduled runs cover a full day. At <b>08:40 IST</b> (03:10 UTC) the news cycle collects headlines, earnings
+  dates and event flags; at <b>09:00 IST</b> (03:30 UTC) the premarket scan builds the opening bias;
+  at <b>09:10 IST</b> (03:40 UTC) the per stock engine resolves the latest United States closes and relearns every
+  stock's own corrections (Monday to Saturday, so the Friday US close is caught on Saturday); and at <b>09:20 IST</b>
+  (03:50 UTC) a confirmation pass records what price action actually did after the bell, resolves the opening bias call
+  and appends everything to the same report. Each typically finishes in under three minutes. The Run scan now button
+  triggers the premarket pipeline on demand (rate limited to once per 2 minutes). Every run overwrites “latest” and
+  appends to the dated archive; 400 days of history are kept.</p>
+
+  <h2 id="framework">The decision framework (roles, not equal votes)</h2>
+  <p>Earlier versions of this tool counted green vs red indicators as ±1 votes. That was wrong, and it is gone.
+  The four inputs measure different things and are weighted accordingly:</p>
+  <div class="table-scroll">
+  <table class="data">
+    <thead><tr><th scope="col">Indicator</th><th scope="col">What it actually tells you</th><th scope="col">Role</th></tr></thead>
+    <tbody>
+      <tr><td><b>GIFT Nifty</b> (NSE International Exchange, which replaced SGX Nifty in July 2023)</td>
+        <td>Where the Indian market may open relative to its previous close</td><td><b>Primary opening indication</b></td></tr>
+      <tr><td><b>NASDAQ / Dow Jones</b> + live US futures</td>
+        <td>How US markets performed overnight; futures are the more recent information</td><td>Global context</td></tr>
+      <tr><td><b>India VIX</b></td>
+        <td>The options market's expectation of volatility over the next 30 calendar days</td><td>Risk assessment, never direction</td></tr>
+      <tr><td><b>Advances vs declines</b></td>
+        <td>Whether rising or falling stocks dominate</td><td>Trend confirmation once trading begins</td></tr>
+      <tr><td><b>NSE pre open session</b> (09:00 to 09:15)</td>
+        <td>Indicative equilibrium opening level from actual domestic order flow</td><td>Domestic cross confirmation</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Step 1: establish the opening bias from GIFT Nifty</h3>
+  <p>The implied gap is GIFT Nifty's level vs the previous NIFTY 50 close, and its <b>size</b> matters, not just its
+  colour: below 0.15% is neutral, 0.15 to 0.5% is a modest gap, above 0.5% is a strong gap. A tiny positive move is not
+  equivalent to a substantial one. It remains an estimate, because GIFT is a futures contract carrying basis, not a
+  guaranteed opening price.</p>
+
+  <h3>Step 2: check whether global markets support the bias</h3>
+  <p>The previous US session's close and <b>live US index futures</b> (S&amp;P, Nasdaq, Dow) are read as separate inputs,
+  alongside the Asian session. If GIFT Nifty indicates a positive open while US futures fall and Asia is weak, the
+  framework reports <i>conflicting</i> evidence rather than flipping to a bearish call. Global cues are context;
+  they do not automatically override the domestic price discovery that GIFT Nifty and the pre open session represent.</p>
+
+  <h3>Step 3: cross confirm with the NSE pre open session</h3>
+  <p>Between 09:00 and 09:15 the NSE runs order entry and matching, publishing indicative opening levels. The framework
+  compares that indication with GIFT Nifty's: agreement confirms the bias; disagreement produces an explicit
+  <b>conflicting signals, no directional conclusion</b> classification. When the feed is unreachable
+  (nseindia.com blocks datacenter IPs), the report says so and simply loses domestic confirmation. It never invents it.</p>
+
+  <h3>Step 4: confirm the trend after the open</h3>
+  <p>From 09:15, breadth earns its job: whether the index holds above or below its opening price, and whether advancers
+  or decliners dominate. The 09:20 IST confirmation pass records the actual open, the last price vs open, live breadth
+  and live VIX. These are opening bias classifications and early confirmations, not predictions of the whole session;
+  a market can open 0.5% higher and fall all day.</p>
+
+  <h3>Step 5: use India VIX for risk, not direction</h3>
+  <p>A VIX of 18 does not mean bearish, and 14 does not mean calm in absolute terms. The report reads VIX against its
+  own trailing 1 year distribution: below the 25th percentile is low, 25 to 60 moderate, 60 to 85 elevated, above 85 high.
+  Elevated VIX alongside a bullish bias means “manage risk harder”, not “expect a fall”.</p>
+
+  <h3>Two questions, kept separate</h3>
+  <ul>
+    <li><b>Question A: will the market open higher or lower?</b> Answered by the GIFT gap, cross confirmed by the NSE
+    pre open, contextualised by global cues. This is what the headline classification is.</li>
+    <li><b>Question B: will the move sustain after the open?</b> Judged from the post open confirmation snapshot, live
+    breadth, and the session's own price action. The LSTM/TimesFM forecasts are inputs to this question, with all their
+    caveats on the <a href="/model.html">model page</a>.</li>
+  </ul>
+
+  <h3>Worked scenarios (how conflicts resolve)</h3>
+  <div class="table-scroll">
+  <table class="data">
+    <thead><tr><th scope="col">Observation</th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th></tr></thead>
+    <tbody>
+      <tr><td>GIFT Nifty</td><td>Positive</td><td>Positive</td><td>Negative</td></tr>
+      <tr><td>NSE pre open</td><td>Positive</td><td>Negative</td><td>Negative</td></tr>
+      <tr><td>Global cues</td><td>Positive</td><td>Mixed</td><td>Negative</td></tr>
+      <tr><td>India VIX</td><td>Elevated</td><td>Low</td><td>Elevated</td></tr>
+      <tr><td><b>Report says</b></td><td>Positive opening bias, confirmed; risk elevated</td><td><b>Conflicting signals, no directional conclusion</b></td><td>Negative opening bias; risk elevated</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="src">Scenario B is the whole point: two greens, a red and a neutral would have counted “bullish” under the
+  old vote rule, but the domestic pre open disagrees, so the only honest output is to wait for more information.</p>
+
+  <h2 id="sources-legacy">Legacy score</h2>
+  <p>The old ±1 equal vote score (−5 to +5) is still computed and stored in each report for archive continuity, but the
+  dashboard and headlines lead with the framework classification above. History entries made before the change show
+  their original scores.</p>
+
+  <h2 id="implied">Implied open</h2>
+  <p>GIFT Nifty's current level minus NIFTY 50's previous close, as a percentage. Caveat, stated on every report:
+  GIFT is a futures contract: the gap includes the futures basis (interest, dividends, time to expiry), so it is an
+  indication of the open, not a prediction of it.</p>
+
+  <h2 id="context">Market context &amp; interpretation thresholds</h2>
+  <div class="table-scroll">
+  <table class="data">
+    <thead><tr><th scope="col">Factor</th><th scope="col">Symbol</th><th scope="col">Threshold for a “read”</th><th scope="col">plain language rule</th></tr></thead>
+    <tbody>
+      <tr><td>Crude oil (WTI / Brent)</td><td>CL=F, BZ=F</td><td>±1%</td>
+        <td>Up → import bill headwind for OMCs, paints, tyres, aviation; tailwind for ONGC/Oil India. Down → the reverse.</td></tr>
+      <tr><td>USD/INR</td><td>INR=X</td><td>±0.2%</td>
+        <td>Rupee weakness → FII outflow pressure and costlier imports; strength → the reverse; IT exporters benefit from weakness.</td></tr>
+      <tr><td>Gold</td><td>GC=F</td><td>±0.5%</td><td>Up → risk off tone; down → risk on tone.</td></tr>
+      <tr><td>US 10 year yield</td><td>^TNX</td><td>±5 bp</td>
+        <td>Rising yields → pressure on rate sensitive sectors (banks, realty, autos); falling → relief. Displayed in % (value/10); change in basis points.</td></tr>
+      <tr><td>Asia Pacific</td><td>^N225, ^HSI</td><td>±0.3%</td><td>Directional tone for the Indian open from the nearest open markets.</td></tr>
+      <tr><td>S&amp;P 500 spot</td><td>^GSPC</td><td>directional</td><td>Cross check of the CNBC index quotes.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="src">Each factor card shows a 5 day sparkline from Yahoo's spark API; percentages are vs the previous
+  session's chart close. These reads are heuristics, labelled as such, not model output.</p>
+
+  <h2 id="model-ref">LSTM forecast</h2>
+  <p>The 5 session NIFTY path and its rolling 10 session backtest come from the 3 layer LSTM described on the
+  <a href="/model.html">model page</a>. The forecast panel additionally guards itself: if the last 60 scaled price
+  points fall outside [−0.05, 1.05] of the frozen training scaler, the panel displays an unreliable, retrain now warning
+  instead of pretending the numbers are valid.</p>
+
+  <h2 id="per-stock">Per stock adaptive engine (every symbol learns)</h2>
+  <p>Since October 2026 every stock on the <a href="/stocks.html">stocks page</a> is forecast by a
+  gradient boosted tree model trained on a decade of daily data (December 2016 to October 2026,
+  about 123,000 training rows over 50 symbols), and every stock then improves on its own results:</p>
+  <ul>
+    <li><b>Inputs beyond price history.</b> Each forecast uses 26 features: the stock's own returns, volatility,
+    moving average distances, RSI and volume; the market via SPY, QQQ and the CBOE VIX (level, change and one year
+    percentile); and the stock's sector via its sector ETF. It is not a single price equation.</li>
+    <li><b>Daily learning loop.</b> After each United States session closes, the engine resolves its pending
+    predictions against what really happened. Each stock keeps its own scorecard and relearns three things daily:
+    a <a href="/glossary.html#bias_correction">bias correction</a> (rolling mean of its own recent errors), a
+    <a href="/glossary.html#prediction_band">prediction band</a> width (recalibrated so the stated 80% range keeps
+    its promise), and a per stock blend weight with the offline TimesFM artifact, learned exactly like the
+    NIFTY ensemble weight.</li>
+    <li><b>Walk forward by year.</b> The training was validated by training one model per year using only earlier
+    years, so every score in the decade table on the stocks page is out of sample.</li>
+  </ul>
+  <p><b>What honestly improves and what does not.</b> The per stock corrections measurably improve calibration
+  (the 80% range covered 78% of outcomes in a day by day 2026 simulation) and shift direction accuracy by about a
+  point. Next session direction itself stays near 50 to 53% for every fairly tested model on public data, this one
+  included; published academic results cluster at 53 to 58%, and higher claims usually let future information leak
+  into the test. This site will not display a direction accuracy number that its own scorecard has not produced.</p>
+
+  <h3 id="news-layer">The news and events layer (what the models do not read)</h3>
+  <p>Since October 2026 a separate cycle runs at <b>08:40 IST</b>, before the premarket scan: it collects market
+  headlines (CNBC top news and Google News, United States and India), per stock headlines for all 50 symbols, and the
+  next ten days of earnings dates from the Nasdaq calendar. Headlines are tagged with simple keyword rules
+  (earnings, merger, lawsuit, regulator, layoffs, rates, inflation, geopolitics, election, cyber, recall, accident)
+  and per stock daily headline counts are recorded, so a sudden burst of news is flagged as <i>heavy news</i>. All of
+  it is shown on the dashboard and the stocks page with its as of date and source states.</p>
+  <p>This layer deliberately stays outside the forecast models. The models would need years of paired news history to
+  learn from headlines honestly, and we will not pretend otherwise: today the news is displayed for you to weigh,
+  and the daily counts accumulate in a blob so a future model version can be trained on them for real.</p>
+
+  <h2 id="sources">Sources &amp; integrity policy</h2>
+  <ul>
+    <li><b>CNBC</b>: <code>quote.cnbc.com/quote-html-webservice/restQuote</code> for <code>.IXIC</code>, <code>.DJI</code>, <code>.SPX</code> class symbols.</li>
+    <li><b>Yahoo Finance</b>: chart v8 (<code>^INDIAVIX</code>, <code>^NSEI</code>, context symbols) and spark v7 (breadth constituents, at most 20 symbols per call).</li>
+    <li><b>NSE India</b>: market status and advance decline endpoints, tried first for breadth; frequently blocks datacenter IPs, hence the Yahoo fallback.</li>
+    <li><b>TradingView</b>: GIFT Nifty daily bar close and change from the public symbol page (server rendered state), the only reliable route found from cloud functions.</li>
+  </ul>
+  <p>Known blocked sources (investing.com, nseindia.com pages from cloud IPs, moneycontrol, Alpha Vantage free tier)
+  are not silently substituted: when the primary fails, the row shows the fallback source that actually answered, or
+  the word unavailable. Prices may be delayed by up to 15 to 20 minutes depending on the provider.</p>
+
+  <h2 id="faq">FAQ</h2>
+  <details class="faq"><summary>When exactly is the report generated?</summary>
+    <p>Twice per trading day: 09:00 IST (premarket report) and 09:20 IST (post open confirmation appended to the same report). Manual runs from the dashboard button are possible any time and are rate limited to one per two minutes.</p></details>
+  <details class="faq"><summary>What happens on weekends and exchange holidays?</summary>
+    <p>Weekends are skipped by the scheduler (in IST, not UTC). Exchange holidays are not modelled: the scan still runs and reports the latest available session values, each labelled with its own session date, so nothing pretends to be “today's” data.</p></details>
+  <details class="faq"><summary>Why do some checks show “unavailable” instead of a number?</summary>
+    <p>Because the source failed or blocked the request. The check is then excluded from the score. Inventing or carrying forward a stale value silently would be worse than admitting the gap.</p></details>
+  <details class="faq"><summary>Can I get the raw data?</summary>
+    <p>Yes: <a href="/api/latest">/api/latest</a> (JSON of the newest report), <a href="/api/history">/api/history</a> (index of saved dates), <code>/api/report?date=YYYY-MM-DD&amp;format=json|md|html</code> for any archived day, and <code>/assets/model-analysis.json</code> for the current LSTM vs TimesFM comparison.</p></details>
+  <details class="faq"><summary>Is this investment advice?</summary>
+    <p>No. It is a research tool showing what public data said before the open, with sources, timestamps and honest error bars. Do your own diligence.</p></details>
+  <details class="faq"><summary>How often is the model retrained?</summary>
+    <p>Weights ship frozen with the deployment. The documented retraining procedure (same script, refreshed NIFTY CSV, repack) is part of the project; the dashboard flags when prices drift out of the trained scaler range, which is the trigger to retrain.</p></details>
+
+  <p><a href="/">← Dashboard</a> · <a href="/model.html">Model details →</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="cols">
+      <div style="flex:2 1 280px">
+        <h2 translate="no">Premarket India</h2>
+        <p style="max-width:44ch;color:var(--text-muted);font-size:13px">
+          Independent research tool. Not a broker, not an advisor.
+          Nothing here is investment advice; markets can move against any signal.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/">Dashboard</a></li>
+          <li><a href="/stocks.html">Stocks</a></li>
+          <li><a href="/model.html">Models</a></li>
+          <li><a href="/search.html">Search</a></li>
+          <li><a href="/glossary.html">Glossary</a></li>
+          <li><a href="/eli5.html">ELI5</a></li>
+          <li><a href="/api/history">API: history index</a></li>
+          <li><a href="/api/latest">API: latest report</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="/privacy.html">Privacy policy</a></li>
+          <li><a href="/methodology.html#sources">Data sources</a></li>
+          <li><a href="/methodology.html#faq">FAQ</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>Data: CNBC and Yahoo Finance (US indices), Yahoo Finance (India VIX, NIFTY history, global context),
+      TradingView (GIFT Nifty), Nasdaq quote API (per stock page). Prices may be delayed. All data is the property of its
+      respective providers; this project displays snapshots for research and does not redistribute datasets.</p>
+      <p>&copy; 2026 Premarket India. Built to run unattended on Netlify Functions and Blobs.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="to-top" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<script src="/assets/chrome.js" defer></script>
+</body>
+</html>

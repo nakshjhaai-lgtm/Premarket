@@ -1,0 +1,11 @@
+{
+  "name": "premarket-india",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Daily automated pre-market report for the Indian market (09:00 IST) — NASDAQ/Dow, India VIX, advances/declines, GIFT Nifty",
+  "dependencies": {
+    "@netlify/functions": "^6.0.2",
+    "@netlify/blobs": "^11.1.4"
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [
+    "404.html",
+    "eli5.html",
+    "glossary.html",
+    "index.html",
+    "llms.txt",
+    "methodology.html",
+    "model.html",
+    "privacy.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml",
+    "stocks.html"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 5
+    }
+  },
+  "results": [
+    {
+      "path": "COMPLIANCE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 187,
+      "nonEmptyLines": 165,
+      "sections": [
+        {
+          "heading": "Compliance audit — \"vibe-coded signals\" document",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "§15 Quick self-audit (red flags) — target: none present",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "§16 Anti-vibe-coded 20-point checklist",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "§17 Security vulnerabilities (20)",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "§18 Security hardening (20)",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "§19 Website features (20)",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "§20 Website fixes (20)",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "§21 Vercel web interface guidelines (mapped to Netlify)",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Deploy-time verification checklist",
+          "level": 2,
+          "line": 154
+        },
+        {
+          "heading": "Pending user decisions (⏳)",
+          "level": 2,
+          "line": 183
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 285,
+      "nonEmptyLines": 238,
+      "sections": [
+        {
+          "heading": "India Pre-market Intelligence: Netlify edition",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "v5.4 (30 October 2026): UI integrity pass",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "What runs every trading day",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "The LSTM model",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "TimesFM (offline) & the adaptive ensemble (primary forecast)",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Per-stock forecasts (/stocks.html)",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Glossary and ELI5 pages",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Source fallbacks (automatic)",
+          "level": 2,
+          "line": 142
+        },
+        {
+          "heading": "Per stock adaptive engine (October 2026)",
+          "level": 2,
+          "line": 163
+        },
+        {
+          "heading": "News, earnings and event flags layer",
+          "level": 2,
+          "line": 198
+        },
+        {
+          "heading": "Site writing policy",
+          "level": 2,
+          "line": 214
+        },
+        {
+          "heading": "Operations runbook",
+          "level": 2,
+          "line": 226
+        },
+        {
+          "heading": "Hard-won platform notes (do not \"fix\" these back)",
+          "level": 2,
+          "line": 267
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "netlify.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 47,
+      "nonEmptyLines": 39,
+      "sections": [
+        {
+          "heading": "build",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "functions.\"daily-scan\"",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "functions.\"post-open-scan\"",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "functions.\"stocks-adaptive\"",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "functions.\"news-scan\"",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "functions",
+          "level": 1,
+          "line": 24
+        },
+        {
+          "heading": "[[headers]]",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "headers.values",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "[[headers]]",
+          "level": 1,
+          "line": 39
+        },
+        {
+          "heading": "headers.values",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "[[headers]]",
+          "level": 1,
+          "line": 44
+        },
+        {
+          "heading": "headers.values",
+          "level": 2,
+          "line": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 11,
+      "nonEmptyLines": 11,
+      "sections": [
+        {
+          "heading": "name",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "version",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "private",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "type",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "description",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "dependencies",
+          "level": 1,
+          "line": 7
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "skills-lock.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 59,
+      "nonEmptyLines": 59,
+      "sections": [
+        {
+          "heading": "version",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "skills",
+          "level": 1,
+          "line": 3
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    }
+  ]
+}

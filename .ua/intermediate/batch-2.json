@@ -1,0 +1,93 @@
+{
+ "batchFiles": [],
+ "nodes": [
+  {
+   "id": "resource:assets/backtest-decade.json",
+   "type": "resource",
+   "name": "Decade backtest data",
+   "filePath": "assets/backtest-decade.json",
+   "summary": "Walk-forward direction accuracy by year (2018 to 2026) for the per stock GBM ecosystem; rendered by the collapsed backtest section on the stocks page.",
+   "tags": [
+    "data",
+    "backtest"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "resource:assets/hpq-article.json",
+   "type": "resource",
+   "name": "HPQ validation data",
+   "filePath": "assets/hpq-article.json",
+   "summary": "The article's own HPQ dataset and training history used to prove the LSTM port reproduces the published result; drives the validation exhibit on the dashboard.",
+   "tags": [
+    "data",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "resource:assets/model-analysis.json",
+   "type": "resource",
+   "name": "TimesFM model analysis",
+   "filePath": "assets/model-analysis.json",
+   "summary": "Offline TimesFM 2.5 forecasts for NIFTY with the ensemble analysis; drives the second opinion panel and part of the model page.",
+   "tags": [
+    "data",
+    "timesfm"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "resource:assets/search-index.json",
+   "type": "resource",
+   "name": "Site search index",
+   "filePath": "assets/search-index.json",
+   "summary": "102 documents (7 pages plus 95 glossary terms with anchors) with plain text extracted at build time by tools/build-search-index.mjs. Consumed by search.html.",
+   "tags": [
+    "data",
+    "search"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "resource:assets/stock-forecasts.json",
+   "type": "resource",
+   "name": "Offline TimesFM stock forecasts",
+   "filePath": "assets/stock-forecasts.json",
+   "summary": "The offline per stock TimesFM artifact (5 session paths and per symbol backtest stats) rendered as the second table on the stocks page; blended into live forecasts while fresh.",
+   "tags": [
+    "data",
+    "timesfm",
+    "stocks"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "resource:assets/stock-history-seed.json",
+   "type": "resource",
+   "name": "Stock history seed",
+   "filePath": "assets/stock-history-seed.json",
+   "summary": "Seed close history used to bootstrap per stock state before the adaptive cycle accumulates its own data.",
+   "tags": [
+    "data",
+    "seed"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:assets/styles.css",
+   "type": "file",
+   "name": "Design system",
+   "filePath": "assets/styles.css",
+   "summary": "The single stylesheet: token block (spacing scale, 3 radius values, type scale, light and dark palettes, layered shadows, Okabe-Ito chart colors), base elements, header/nav, panels, tables, chips, skeletons, print rules and the Netlify badge hide.",
+   "tags": [
+    "frontend",
+    "design-system",
+    "css"
+   ],
+   "complexity": "complex"
+  }
+ ],
+ "edges": [],
+ "notes": "Authored by the project author as the file-analyzer agent (Understand-Anything Phase 2)."
+}

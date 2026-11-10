@@ -1,0 +1,270 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [
+    "assets/styles.css"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 6
+    }
+  },
+  "results": [
+    {
+      "path": "assets/backtest-decade.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "sections": [
+        {
+          "heading": "as_of",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "training_window",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "features",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "years",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "final_year",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "per_stock_2026",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "feature_importance_top",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "adaptive_sim_2026",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "assets/hpq-article.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "sections": [
+        {
+          "heading": "meta",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "scaler",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "split",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "x_axis",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "preds",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "actuals_tail",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "assets/model-analysis.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "sections": [
+        {
+          "heading": "as_of",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "generated_at",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "last_close",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "timesfm",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "lstm_live_next",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "ensemble",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "comparison",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "forecast",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "assets/search-index.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "assets/stock-forecasts.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 4659,
+      "nonEmptyLines": 4659,
+      "sections": [
+        {
+          "heading": "as_of",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "generated_at",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "model",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "count",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "failed",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "stocks",
+          "level": 1,
+          "line": 7
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "assets/stock-history-seed.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "sections": [
+        {
+          "heading": "symbols",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "vix",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "as_of",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    }
+  ]
+}

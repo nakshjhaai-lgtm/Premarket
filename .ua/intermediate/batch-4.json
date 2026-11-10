@@ -1,0 +1,397 @@
+{
+ "batchFiles": [],
+ "nodes": [
+  {
+   "id": "file:netlify/functions/news-scan.mjs",
+   "type": "file",
+   "name": "news-scan stub",
+   "filePath": "netlify/functions/news-scan.mjs",
+   "summary": "Scheduled 03:10 UTC (08:40 IST, Mon-Sat). Triggers news-background; also self throttles to one run per 10 minutes via the last-news-run blob so public re-triggers cannot force reruns.",
+   "tags": [
+    "function",
+    "schedule",
+    "stub"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:netlify/functions/post-open-scan.mjs",
+   "type": "file",
+   "name": "post-open-scan stub",
+   "filePath": "netlify/functions/post-open-scan.mjs",
+   "summary": "Scheduled 03:50 UTC (09:20 IST, Mon-Fri). Triggers the post-open confirmation snapshot in scan-background with the post-open header.",
+   "tags": [
+    "function",
+    "schedule",
+    "stub"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:netlify/functions/scan-background.mjs",
+   "type": "file",
+   "name": "scan-background worker",
+   "filePath": "netlify/functions/scan-background.mjs",
+   "summary": "The 15 minute budget worker for the daily scan and the post-open confirmation. Rejects headerless public POSTs (403), stores the report as JSON/markdown/HTML in blobs, updates the framework scorecard and computes the summary in memory to dodge blob read-after-write staleness.",
+   "tags": [
+    "function",
+    "background",
+    "worker"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:netlify/functions/stocks-adaptive-background.mjs",
+   "type": "file",
+   "name": "stocks-adaptive-background worker",
+   "filePath": "netlify/functions/stocks-adaptive-background.mjs",
+   "summary": "Runs the per stock learning cycle: resolves pending predictions against real closes, relearns per stock parameters and emits the next session forecasts into the stocks-live blob. Same 30 minute public throttle pattern.",
+   "tags": [
+    "function",
+    "background",
+    "worker"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:netlify/functions/stocks-adaptive.mjs",
+   "type": "file",
+   "name": "stocks-adaptive stub",
+   "filePath": "netlify/functions/stocks-adaptive.mjs",
+   "summary": "Scheduled 03:40 UTC (09:10 IST, Mon-Sat; Saturday catches the Friday US close). Triggers stocks-adaptive-background with a 10 minute stub guard.",
+   "tags": [
+    "function",
+    "schedule",
+    "stub"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:test-local.mjs",
+   "type": "file",
+   "name": "Root local test",
+   "filePath": "test-local.mjs",
+   "summary": "Smoke test runner for the local function stack from the project root.",
+   "tags": [
+    "tooling",
+    "test"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:tools/build-model-analysis.mjs",
+   "type": "file",
+   "name": "Model analysis builder",
+   "filePath": "tools/build-model-analysis.mjs",
+   "summary": "Offline: learns the ensemble weight from the TimesFM and LSTM forecast histories and writes assets/model-analysis.json.",
+   "tags": [
+    "tooling",
+    "ensemble"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:tools/build-search-index.mjs",
+   "type": "file",
+   "name": "Search index builder",
+   "filePath": "tools/build-search-index.mjs",
+   "summary": "Builds assets/search-index.json from the 7 content pages (tags stripped) plus the 95 glossary terms imported from the real module, so search covers the glossary with anchors. Run after any content change.",
+   "tags": [
+    "tooling",
+    "search"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:tools/make_exhibit.py",
+   "type": "file",
+   "name": "Exhibit builder",
+   "filePath": "tools/make_exhibit.py",
+   "summary": "Python: builds the HPQ validation exhibit data from the article dataset.",
+   "tags": [
+    "tooling",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:tools/pack_model.py",
+   "type": "file",
+   "name": "Model packer",
+   "filePath": "tools/pack_model.py",
+   "summary": "Python: reads the trained Keras LSTM weights and emits the base64 packed blob consumed by lib/model-nifty.mjs.",
+   "tags": [
+    "tooling",
+    "lstm"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:tools/prove-adaptivity.mjs",
+   "type": "file",
+   "name": "Adaptivity proof",
+   "filePath": "tools/prove-adaptivity.mjs",
+   "summary": "Replays the walk-forward with the adaptive layer on and off to measure the honest gain (+0.3 to +1.1 points) and band coverage (77.97 percent).",
+   "tags": [
+    "tooling",
+    "backtest"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:tools/stock_forecasts.py",
+   "type": "file",
+   "name": "Offline data fetcher",
+   "filePath": "tools/stock_forecasts.py",
+   "summary": "Python: pulls per stock history from Nasdaq, Yahoo and Alpha Vantage with fallbacks and paces requests; feeds the offline TimesFM runs.",
+   "tags": [
+    "tooling",
+    "data"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:tools/style-audit.mjs",
+   "type": "file",
+   "name": "Style auditor",
+   "filePath": "tools/style-audit.mjs",
+   "summary": "Audits all shipped text for em dashes, buzzwords and style rule violations with an allowlist for numbers, tickers and ISO dates.",
+   "tags": [
+    "tooling",
+    "audit"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:tools/test-local.mjs",
+   "type": "file",
+   "name": "Local end-to-end test",
+   "filePath": "tools/test-local.mjs",
+   "summary": "Boots the functions locally with netlify dev style stubs and checks the report pipeline.",
+   "tags": [
+    "tooling",
+    "test"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:tools/test-news-engine.mjs",
+   "type": "file",
+   "name": "News engine test",
+   "filePath": "tools/test-news-engine.mjs",
+   "summary": "Runs one real news cycle locally against the live sources and asserts headline counts, symbol feed health and earnings parsing. The NEWS_ENGINE_OK gate.",
+   "tags": [
+    "tooling",
+    "test"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:tools/test-stocks-engine.mjs",
+   "type": "file",
+   "name": "Stocks engine test",
+   "filePath": "tools/test-stocks-engine.mjs",
+   "summary": "Simulates the adaptive cycle against a fake blob store and asserts prediction resolution and relearning.",
+   "tags": [
+    "tooling",
+    "test"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:tools/timesfm_run.py",
+   "type": "file",
+   "name": "TimesFM runner",
+   "filePath": "tools/timesfm_run.py",
+   "summary": "Python: batches the 50 symbols through TimesFM 2.5 offline and writes the forecast artifact.",
+   "tags": [
+    "tooling",
+    "timesfm"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:tools/validate-lstm.mjs",
+   "type": "file",
+   "name": "LSTM validator",
+   "filePath": "tools/validate-lstm.mjs",
+   "summary": "Loads the packed NIFTY model, runs the 5 session forecast and compares against the recorded training-time outputs to prove the JS port is bit faithful.",
+   "tags": [
+    "tooling",
+    "validation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:netlify/functions/scan-background.mjs:storeReport",
+   "type": "function",
+   "name": "storeReport",
+   "filePath": "netlify/functions/scan-background.mjs",
+   "summary": "Writes the report as JSON, markdown and HTML blobs for the archive, the API and the latest view.",
+   "tags": [
+    "storage"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:netlify/functions/scan-background.mjs:postOpenConfirmation",
+   "type": "function",
+   "name": "postOpenConfirmation",
+   "filePath": "netlify/functions/scan-background.mjs",
+   "summary": "The 09:20 snapshot: what actually happened after the bell, merged into today's stored report.",
+   "tags": [
+    "engine",
+    "framework"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:netlify/functions/scan-background.mjs:summaryFrom",
+   "type": "function",
+   "name": "summaryFrom",
+   "filePath": "netlify/functions/scan-background.mjs",
+   "summary": "Computes the summary in memory after storing, dodging the blob read-after-write staleness bug.",
+   "tags": [
+    "storage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:netlify/functions/scan-background.mjs:default",
+   "type": "function",
+   "name": "default handler",
+   "filePath": "netlify/functions/scan-background.mjs",
+   "summary": "The function entrypoint: guards, then runs the cycle and stores the result.",
+   "tags": [
+    "entrypoint"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:netlify/functions/stocks-adaptive-background.mjs:default",
+   "type": "function",
+   "name": "default handler",
+   "filePath": "netlify/functions/stocks-adaptive-background.mjs",
+   "summary": "The function entrypoint: guards, then runs the cycle and stores the result.",
+   "tags": [
+    "entrypoint"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:netlify/functions/scan-background.mjs",
+   "target": "file:lib/scan.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:netlify/functions/scan-background.mjs",
+   "target": "file:lib/ensemble.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:netlify/functions/scan-background.mjs",
+   "target": "file:lib/lstm.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:netlify/functions/scan-background.mjs",
+   "target": "file:lib/model-nifty.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:netlify/functions/stocks-adaptive-background.mjs",
+   "target": "file:lib/stocks-engine.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:tools/build-search-index.mjs",
+   "target": "file:assets/glossary-terms.mjs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:netlify/functions/post-open-scan.mjs",
+   "target": "file:netlify/functions/scan-background.mjs",
+   "type": "triggers",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:netlify/functions/news-scan.mjs",
+   "target": "file:netlify/functions/news-background.mjs",
+   "type": "triggers",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:netlify/functions/stocks-adaptive.mjs",
+   "target": "file:netlify/functions/stocks-adaptive-background.mjs",
+   "type": "triggers",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:netlify/functions/scan-background.mjs",
+   "target": "function:netlify/functions/scan-background.mjs:storeReport",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:netlify/functions/scan-background.mjs",
+   "target": "function:netlify/functions/scan-background.mjs:postOpenConfirmation",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:netlify/functions/scan-background.mjs",
+   "target": "function:netlify/functions/scan-background.mjs:summaryFrom",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:netlify/functions/scan-background.mjs",
+   "target": "function:lib/scan.mjs:runScan",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:netlify/functions/stocks-adaptive-background.mjs",
+   "target": "function:lib/stocks-engine.mjs:runAdaptiveCycle",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:netlify/functions/scan-background.mjs",
+   "target": "function:netlify/functions/scan-background.mjs:default",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "file:netlify/functions/stocks-adaptive-background.mjs",
+   "target": "function:netlify/functions/stocks-adaptive-background.mjs:default",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 0.9
+  }
+ ],
+ "notes": "Authored by the project author as the file-analyzer agent (Understand-Anything Phase 2)."
+}

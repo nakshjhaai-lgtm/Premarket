@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "skills": {
+    "understand": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "skillPath": "understand-anything-plugin/skills/understand/SKILL.md",
+      "computedHash": "d940f1293fec1d8001b660c8d24d4cb1850cb94185192701e1ce900123d7e42d"
+    },
+    "understand-chat": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "skillPath": "understand-anything-plugin/skills/understand-chat/SKILL.md",
+      "computedHash": "a514dcc798581cbe8fb34f94259419fb266cae3a39cb3f27fa4e1965fb91811e"
+    },
+    "understand-dashboard": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "skillPath": "understand-anything-plugin/skills/understand-dashboard/SKILL.md",
+      "computedHash": "a08ae9e6da976755066af7feaf11f3b7bd6eb4351acb49c5e3878c1fc2a1e295"
+    },
+    "understand-diff": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "skillPath": "understand-anything-plugin/skills/understand-diff/SKILL.md",
+      "computedHash": "b127ca3e87722fb713ef167120487d9ea2446d45257b9889ea46c953d8e82c07"
+    },
+    "understand-domain": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "skillPath": "understand-anything-plugin/skills/understand-domain/SKILL.md",
+      "computedHash": "12d78d7ad4396a172c8e39502521ab403e0755dd3f01a4b626112b3c984093ee"
+    },
+    "understand-explain": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "skillPath": "understand-anything-plugin/skills/understand-explain/SKILL.md",
+      "computedHash": "d2ca31d93c3c02069ece0783b4e955b42dc0f1d5959bf6749a015e40548d2859"
+    },
+    "understand-figma": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "skillPath": "understand-anything-plugin/skills/understand-figma/SKILL.md",
+      "computedHash": "488ebff9664f084069141cddaf16439aa420cfdb6df54403a83ecf3e237be958"
+    },
+    "understand-knowledge": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "skillPath": "understand-anything-plugin/skills/understand-knowledge/SKILL.md",
+      "computedHash": "34dff7e2cd79f61d73f07dc2b1f844ae158c11ffe6b088dcb0f9e018e908495c"
+    },
+    "understand-onboard": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "skillPath": "understand-anything-plugin/skills/understand-onboard/SKILL.md",
+      "computedHash": "a6952f46c53767816ee447c23ac2b505ecb09cb2ce9c5c113b561d9e91e064d0"
+    }
+  }
+}

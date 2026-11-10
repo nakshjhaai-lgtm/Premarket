@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-10-17 13:56:00 IST",
+  "date": "2026-10-17",
+  "weekday": "Saturday",
+  "score": 1,
+  "bias": "Mildly positive bias: a green open is somewhat more likely",
+  "unavailable": [],
+  "checks": {
+    "us_overnight": [
+      {
+        "label": "NASDAQ Composite",
+        "value": 26140.034,
+        "change": -572.992,
+        "pct": -2.15,
+        "signal": "RED",
+        "source": "cnbc.com quote API"
+      },
+      {
+        "label": "Dow Jones Industrial Average",
+        "value": 52002.41,
+        "change": -175.28,
+        "pct": -0.34,
+        "signal": "RED",
+        "source": "cnbc.com quote API"
+      }
+    ],
+    "india_vix": {
+      "label": "India VIX",
+      "value": 14.025,
+      "threshold": 15.0,
+      "signal": "LOW volatility expected",
+      "source": "Yahoo Finance chart API"
+    },
+    "advance_decline": {
+      "label": "Advances vs Declines",
+      "advances": 29,
+      "declines": 20,
+      "unchanged": 0,
+      "universe": "NIFTY 50 constituents (derived), previous session",
+      "signal": "BULLISH breadth",
+      "source": "Yahoo Finance spark API"
+    },
+    "singapore_nifty": {
+      "label": "Singapore Nifty (GIFT Nifty)",
+      "contract": "GIFT Nifty (front month)",
+      "value": 23094.5,
+      "pct": 0.46328519227423004,
+      "signal": "GREEN",
+      "source": "TradingView page crawl (in.tradingview.com)"
+    }
+  }
+}

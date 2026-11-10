@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://premarket-india-report.netlify.app/sitemap.xml

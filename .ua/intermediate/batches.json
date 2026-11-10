@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 67,
+  "totalBatches": 4,
+  "exportsByPath": {
+    "assets/app.js": [],
+    "assets/charts.js": [
+      "lineChart",
+      "sparkline",
+      "breadthBar"
+    ],
+    "assets/chrome.js": [],
+    "assets/glossary-terms.mjs": [
+      "TERMS",
+      "LINKABLE"
+    ],
+    "assets/glossary-view.js": [],
+    "assets/search-view.js": [],
+    "assets/stocks-view.js": [],
+    "lib/ensemble.mjs": [
+      "ARTIFACT",
+      "artifactParams",
+      "nextTradingDays",
+      "ensembleView",
+      "loadScorecard",
+      "updateScorecard"
+    ],
+    "lib/lstm.mjs": [
+      "LstmCell",
+      "LstmForecaster",
+      "decodePackedModel"
+    ],
+    "lib/model-nifty.mjs": [
+      "PACKED"
+    ],
+    "lib/news-engine.mjs": [
+      "TAGS",
+      "tagHeadline",
+      "parseRss",
+      "runNewsCycle",
+      "loadNews"
+    ],
+    "lib/scan.mjs": [
+      "VIX_THRESHOLD",
+      "NIFTY50",
+      "fnum",
+      "colour",
+      "istNow",
+      "usIndices",
+      "indiaVix",
+      "advanceDecline",
+      "singaporeNifty",
+      "CONTEXT_SYMBOLS",
+      "marketContext",
+      "impliedOpen",
+      "GAP_NEUTRAL",
+      "GAP_STRONG",
+      "classifyGap",
+      "assessGlobalCues",
+      "vixRisk",
+      "nsePreOpen",
+      "postOpenConfirmation",
+      "assembleFramework",
+      "niftyPrediction",
+      "makeSourceTracker",
+      "runScan",
+      "toMarkdown",
+      "toHtml"
+    ],
+    "lib/stock-features.mjs": [
+      "FEATURES",
+      "SECTOR",
+      "bisectDate",
+      "featureRow",
+      "gbmPredict",
+      "gbmFeatureNames",
+      "FEAT_INDEX"
+    ],
+    "lib/stocks-engine.mjs": [
+      "STOCKS",
+      "SYMBOLS",
+      "runAdaptiveCycle",
+      "loadLiveView"
+    ],
+    "netlify/functions/api-history.mjs": [
+      "config"
+    ],
+    "netlify/functions/api-latest.mjs": [
+      "config"
+    ],
+    "netlify/functions/api-news.mjs": [
+      "config"
+    ],
+    "netlify/functions/api-report.mjs": [
+      "config"
+    ],
+    "netlify/functions/api-scan.mjs": [
+      "config"
+    ],
+    "netlify/functions/api-stocks.mjs": [
+      "config"
+    ],
+    "netlify/functions/daily-scan.mjs": [],
+    "netlify/functions/news-background.mjs": [],
+    "netlify/functions/news-scan.mjs": [],
+    "netlify/functions/post-open-scan.mjs": [],
+    "netlify/functions/scan-background.mjs": [],
+    "netlify/functions/stocks-adaptive-background.mjs": [],
+    "netlify/functions/stocks-adaptive.mjs": [],
+    "test-local.mjs": [],
+    "tools/build-model-analysis.mjs": [],
+    "tools/build-search-index.mjs": [],
+    "tools/make_exhibit.py": [],
+    "tools/pack_model.py": [
+      "flat",
+      "shape",
+      "main"
+    ],
+    "tools/prove-adaptivity.mjs": [],
+    "tools/stock_forecasts.py": [
+      "_http_json",
+      "fetch_nasdaq",
+      "fetch_yahoo",
+      "fetch_alphavantage",
+      "_from_eod_file",
+      "load_data_compat",
+      "main"
+    ],
+    "tools/style-audit.mjs": [],
+    "tools/test-local.mjs": [],
+    "tools/test-news-engine.mjs": [],
+    "tools/test-stocks-engine.mjs": [],
+    "tools/timesfm_run.py": [
+      "batch_forecast",
+      "next_days"
+    ],
+    "tools/validate-lstm.mjs": []
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "404.html",
+          "language": "html",
+          "sizeLines": 73,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "COMPLIANCE.md",
+          "language": "markdown",
+          "sizeLines": 187,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 285,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "eli5.html",
+          "language": "html",
+          "sizeLines": 204,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "glossary.html",
+          "language": "html",
+          "sizeLines": 131,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "index.html",
+          "language": "html",
+          "sizeLines": 221,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "llms.txt",
+          "language": "txt",
+          "sizeLines": 95,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "methodology.html",
+          "language": "html",
+          "sizeLines": 306,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "model.html",
+          "language": "html",
+          "sizeLines": 227,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "netlify.toml",
+          "language": "toml",
+          "sizeLines": 47,
+          "fileCategory": "config"
+        },
+        {
+          "path": "package.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "privacy.html",
+          "language": "html",
+          "sizeLines": 138,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "robots.txt",
+          "language": "txt",
+          "sizeLines": 4,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "search.html",
+          "language": "html",
+          "sizeLines": 125,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "sitemap.xml",
+          "language": "xml",
+          "sizeLines": 48,
+          "fileCategory": "config"
+        },
+        {
+          "path": "skills-lock.json",
+          "language": "json",
+          "sizeLines": 59,
+          "fileCategory": "config"
+        },
+        {
+          "path": "stocks.html",
+          "language": "html",
+          "sizeLines": 153,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "404.html": [],
+        "COMPLIANCE.md": [],
+        "README.md": [],
+        "eli5.html": [],
+        "glossary.html": [],
+        "index.html": [],
+        "llms.txt": [],
+        "methodology.html": [],
+        "model.html": [],
+        "netlify.toml": [],
+        "package.json": [],
+        "privacy.html": [],
+        "robots.txt": [],
+        "search.html": [],
+        "sitemap.xml": [],
+        "skills-lock.json": [],
+        "stocks.html": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "assets/backtest-decade.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": "assets/hpq-article.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": "assets/model-analysis.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": "assets/search-index.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": "assets/stock-forecasts.json",
+          "language": "json",
+          "sizeLines": 4658,
+          "fileCategory": "config"
+        },
+        {
+          "path": "assets/stock-history-seed.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": "assets/styles.css",
+          "language": "css",
+          "sizeLines": 616,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "assets/backtest-decade.json": [],
+        "assets/hpq-article.json": [],
+        "assets/model-analysis.json": [],
+        "assets/search-index.json": [],
+        "assets/stock-forecasts.json": [],
+        "assets/stock-history-seed.json": [],
+        "assets/styles.css": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": ".netlify/functions/manifest.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": ".netlify/netlify.toml",
+          "language": "toml",
+          "sizeLines": 64,
+          "fileCategory": "config"
+        },
+        {
+          "path": "assets/app.js",
+          "language": "javascript",
+          "sizeLines": 838,
+          "fileCategory": "code"
+        },
+        {
+          "path": "assets/charts.js",
+          "language": "javascript",
+          "sizeLines": 134,
+          "fileCategory": "code"
+        },
+        {
+          "path": "assets/chrome.js",
+          "language": "javascript",
+          "sizeLines": 47,
+          "fileCategory": "code"
+        },
+        {
+          "path": "assets/glossary-terms.mjs",
+          "language": "javascript",
+          "sizeLines": 361,
+          "fileCategory": "code"
+        },
+        {
+          "path": "assets/glossary-view.js",
+          "language": "javascript",
+          "sizeLines": 105,
+          "fileCategory": "code"
+        },
+        {
+          "path": "assets/search-view.js",
+          "language": "javascript",
+          "sizeLines": 76,
+          "fileCategory": "code"
+        },
+        {
+          "path": "assets/stocks-view.js",
+          "language": "javascript",
+          "sizeLines": 286,
+          "fileCategory": "code"
+        },
+        {
+          "path": "lib/ensemble.mjs",
+          "language": "javascript",
+          "sizeLines": 167,
+          "fileCategory": "code"
+        },
+        {
+          "path": "lib/gbm-model.json",
+          "language": "json",
+          "sizeLines": 0,
+          "fileCategory": "config"
+        },
+        {
+          "path": "lib/lstm.mjs",
+          "language": "javascript",
+          "sizeLines": 161,
+          "fileCategory": "code"
+        },
+        {
+          "path": "lib/model-nifty.mjs",
+          "language": "javascript",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "lib/news-engine.mjs",
+          "language": "javascript",
+          "sizeLines": 196,
+          "fileCategory": "code"
+        },
+        {
+          "path": "lib/scan.mjs",
+          "language": "javascript",
+          "sizeLines": 1052,
+          "fileCategory": "code"
+        },
+        {
+          "path": "lib/stock-features.mjs",
+          "language": "javascript",
+          "sizeLines": 126,
+          "fileCategory": "code"
+        },
+        {
+          "path": "lib/stocks-engine.mjs",
+          "language": "javascript",
+          "sizeLines": 270,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/api-history.mjs",
+          "language": "javascript",
+          "sizeLines": 13,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/api-latest.mjs",
+          "language": "javascript",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/api-news.mjs",
+          "language": "javascript",
+          "sizeLines": 13,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/api-report.mjs",
+          "language": "javascript",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/api-scan.mjs",
+          "language": "javascript",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/api-stocks.mjs",
+          "language": "javascript",
+          "sizeLines": 13,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/daily-scan.mjs",
+          "language": "javascript",
+          "sizeLines": 15,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/news-background.mjs",
+          "language": "javascript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".netlify/functions/manifest.json": [],
+        ".netlify/netlify.toml": [],
+        "assets/app.js": [],
+        "assets/charts.js": [],
+        "assets/chrome.js": [],
+        "assets/glossary-terms.mjs": [],
+        "assets/glossary-view.js": [],
+        "assets/search-view.js": [],
+        "assets/stocks-view.js": [],
+        "lib/ensemble.mjs": [],
+        "lib/gbm-model.json": [],
+        "lib/lstm.mjs": [],
+        "lib/model-nifty.mjs": [],
+        "lib/news-engine.mjs": [],
+        "lib/scan.mjs": [],
+        "lib/stock-features.mjs": [],
+        "lib/stocks-engine.mjs": [],
+        "netlify/functions/api-history.mjs": [],
+        "netlify/functions/api-latest.mjs": [],
+        "netlify/functions/api-news.mjs": [],
+        "netlify/functions/api-report.mjs": [],
+        "netlify/functions/api-scan.mjs": [],
+        "netlify/functions/api-stocks.mjs": [],
+        "netlify/functions/daily-scan.mjs": [],
+        "netlify/functions/news-background.mjs": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "netlify/functions/news-scan.mjs",
+          "language": "javascript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/post-open-scan.mjs",
+          "language": "javascript",
+          "sizeLines": 15,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/scan-background.mjs",
+          "language": "javascript",
+          "sizeLines": 173,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/stocks-adaptive-background.mjs",
+          "language": "javascript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "netlify/functions/stocks-adaptive.mjs",
+          "language": "javascript",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "test-local.mjs",
+          "language": "javascript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/build-model-analysis.mjs",
+          "language": "javascript",
+          "sizeLines": 151,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/build-search-index.mjs",
+          "language": "javascript",
+          "sizeLines": 47,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/make_exhibit.py",
+          "language": "python",
+          "sizeLines": 42,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/pack_model.py",
+          "language": "python",
+          "sizeLines": 90,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/prove-adaptivity.mjs",
+          "language": "javascript",
+          "sizeLines": 39,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/stock_forecasts.py",
+          "language": "python",
+          "sizeLines": 290,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/style-audit.mjs",
+          "language": "javascript",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/test-local.mjs",
+          "language": "javascript",
+          "sizeLines": 47,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/test-news-engine.mjs",
+          "language": "javascript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/test-stocks-engine.mjs",
+          "language": "javascript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/timesfm_run.py",
+          "language": "python",
+          "sizeLines": 103,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tools/validate-lstm.mjs",
+          "language": "javascript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "netlify/functions/news-scan.mjs": [],
+        "netlify/functions/post-open-scan.mjs": [],
+        "netlify/functions/scan-background.mjs": [],
+        "netlify/functions/stocks-adaptive-background.mjs": [],
+        "netlify/functions/stocks-adaptive.mjs": [],
+        "test-local.mjs": [],
+        "tools/build-model-analysis.mjs": [],
+        "tools/build-search-index.mjs": [],
+        "tools/make_exhibit.py": [],
+        "tools/pack_model.py": [],
+        "tools/prove-adaptivity.mjs": [],
+        "tools/stock_forecasts.py": [],
+        "tools/style-audit.mjs": [],
+        "tools/test-local.mjs": [],
+        "tools/test-news-engine.mjs": [],
+        "tools/test-stocks-engine.mjs": [],
+        "tools/timesfm_run.py": [],
+        "tools/validate-lstm.mjs": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

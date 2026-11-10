@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELI5: this site explained like you are five | India Premarket Intelligence</title>
+<meta name="description" content="The whole site explained in the simplest possible words: what the premarket report is, what the clues mean, how the computer guesses, and what it cannot do.">
+<link rel="canonical" href="https://premarket-india-report.netlify.app/eli5.html">
+<meta name="theme-color" content="#f5f6f8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="India Premarket Intelligence">
+<meta property="og:title" content="ELI5: this site explained like you are five">
+<meta property="og:description" content="The whole site in the simplest words, with everyday comparisons and no jargon.">
+<meta property="og:url" content="https://premarket-india-report.netlify.app/eli5.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/styles.css">
+<noscript><style>@media (max-width:919px){.nav-links{display:flex!important;flex-wrap:wrap}.nav-toggle{display:none!important}}</style></noscript>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="India Premarket Intelligence, home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#0e6e78"/>
+        <path d="M6 22 L12 14 L16 18 L22 8 L26 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="22" cy="8" r="2.4" fill="#fff"/>
+      </svg>
+      <span translate="no">Premarket India<small>daily intelligence before the 09:15 open</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <button class="icon-btn nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="/">Dashboard</a>
+        <a class="nav-link" href="/stocks.html">Stocks</a>
+        <a class="nav-link" href="/model.html">Models</a>
+        <a class="nav-link" href="/methodology.html">Methodology</a>
+        <a class="nav-link" href="/glossary.html">Glossary</a>
+        <a class="nav-link" href="/eli5.html" aria-current="page">ELI5</a>
+        <a class="nav-link" href="/privacy.html">Privacy</a>
+        <button class="icon-btn" id="theme-toggle" aria-label="Switch light/dark theme" title="Switch light/dark theme">
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container" style="max-width:760px">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Report</a> <span aria-hidden="true">&#8250;</span> ELI5 <span class="read-time" aria-hidden="true">&middot;</span> <span class="read-time">&#8776; 7 min read</span></nav>
+  <h1 style="margin:24px 0 8px">This site, explained like you are five</h1>
+  <p class="status-line">Simple words first. Every blue word links to the <a href="/glossary.html">glossary</a>, which has the exact grown up definition.</p>
+
+  <section aria-label="What this website is">
+    <h2>What is this website?</h2>
+    <p>Every morning at 9 o'clock, before the Indian stock market wakes up, this website writes a short report. The report
+    says: here is how the market will probably start today. Up, down, or flat. And here is how sure we are.</p>
+    <p>Think of it like a weather report, but for the stock market instead of the sky.</p>
+  </section>
+
+  <section aria-label="What the NIFTY is">
+    <h2>What is the NIFTY 50?</h2>
+    <p>Imagine the 50 biggest shops in one big market. Someone adds up how all 50 shops are doing every day and turns it
+    into one score. That score is called the <a href="/glossary.html#nifty50">NIFTY 50</a>. When people say the market
+    went up today, they usually mean this score went up.</p>
+  </section>
+
+  <section aria-label="Before the market opens">
+    <h2>What happens before the market opens?</h2>
+    <p>The market sleeps at night. It wakes at 9:15 in the morning. But before it wakes, there are already clues about
+    whether it will start in a good mood or a bad mood. This website collects those clues at 9:00, fifteen minutes
+    before the bell.</p>
+    <p>There is even a warm up round from 9:00 to 9:15 called the <a href="/glossary.html#preopen_session">pre open
+    session</a>, where everyone places their first orders without trading yet. It is like kids lining up before the school
+    gate opens.</p>
+  </section>
+
+  <section aria-label="The clues we check">
+    <h2>The clues we check</h2>
+    <p><b>Clue 1: the practice price.</b> While India sleeps, a copy of the NIFTY is already being traded far away, in a
+    place called GIFT City in Gujarat and on exchanges abroad. That price is called <a href="/glossary.html#gift_nifty">GIFT
+    Nifty</a>. It is like a practice vote about where the market will open. It is our most important clue.</p>
+    <p><b>Clue 2: how the world slept.</b> While India slept, America's markets finished their day and Japan and Hong Kong
+    were already trading. If they had a bad night, India often starts grumpy too. We also check the price of
+    <a href="/glossary.html#oil">oil</a> (India buys a lot of it), <a href="/glossary.html#gold">gold</a>, and a few other
+    things. These are the <a href="/glossary.html#macro_context">market context</a>. They set the mood. They do not give
+    orders.</p>
+    <p><b>Clue 3: the fear thermometer.</b> It is called <a href="/glossary.html#india_vix">India VIX</a>. It does not say
+    up or down. It says how bumpy the road is expected to be today. A high number means hold on tight, in either
+    direction.</p>
+    <p><b>Clue 4: counting hands.</b> After the market opens, we count how many stocks went up (hands raised) and how many
+    went down (hands down). If the market goes up but most hands are down, something is fishy. This clue comes a little
+    later, at 9:20, in the <a href="/glossary.html#postopen_confirmation">post open check</a>.</p>
+    <p>Sometimes the clues disagree. Then we say so, out loud: <a href="/glossary.html#conflicting">conflicting
+    signals</a>, no clear answer today. Guessing anyway would be lying to you.</p>
+  </section>
+
+  <section aria-label="The computer guesses">
+    <h2>The computer that guesses the price</h2>
+    <p>Alongside the clue reading, a computer program guesses tomorrow's NIFTY number. Actually there are two.</p>
+    <p><b>The student.</b> One program, called an <a href="/glossary.html#lstm">LSTM</a>, studied almost 20 years of old
+    NIFTY numbers, the way a student studies old exam papers. It learned patterns in how the numbers move one day after
+    the next.</p>
+    <p><b>The well read outsider.</b> The other program, <a href="/glossary.html#timesfm">TimesFM</a>, was trained by
+    Google on about a hundred billion numbers from all kinds of things, and it has never studied our NIFTY homework. It
+    just looks at our recent numbers and gives an opinion. That is fair, because it cannot cheat.</p>
+    <p><b>The blend.</b> We ask both, then combine their answers into one number called the
+    <a href="/glossary.html#ensemble">ensemble</a>. How much do we trust each one? We measured. Over the last year of
+    guessing one day ahead, the outsider was right far more often, so it gets almost all the say, and the student gets a
+    small say. The exact share is a number called <a href="/glossary.html#blend_weight">w</a>, and it is set by the
+    measurements, not by us.</p>
+  </section>
+
+  <section aria-label="How it learns">
+    <h2>How the computer learns from its mistakes</h2>
+    <p>Every morning the website writes down its guess in a notebook called the
+    <a href="/glossary.html#scorecard">scorecard</a>. The next day, when the real answer is out, it checks: how wrong were
+    we? Each model gets its mistake written down, like marks on a report card. After enough days, the share of trust
+    between the two guessers is recalculated from the recent marks. If the student starts doing better, its say grows.
+    All by itself, every day.</p>
+    <p>The important part: we show you the marks. Every accuracy number on this site was measured on days the models had
+    never seen while learning. Nobody here can see the future. We are just very honest about the odds.</p>
+  </section>
+
+  <section aria-label="The stocks page">
+    <h2>The page with 50 stocks</h2>
+    <p>There is also a page, <a href="/stocks.html">Stocks</a>, where the well read outsider program guesses the next few
+    days for 50 famous companies: Apple, Microsoft, Nvidia, Toyota, an Indian bank or two, and more. Each guess comes
+    with its own little track record, so you can see how often that guessing worked for that stock lately.</p>
+  </section>
+
+  <section aria-label="What this site cannot do">
+    <h2>What this site cannot do</h2>
+    <p>Its number guessing does not read the news. That is why, every morning at 08:40, the site also collects real
+    headlines for every stock, checks who reports earnings this week, and flags big words like war, election, lawsuit,
+    recall or rate cut. It shows these next to the numbers instead of hiding them inside the math, so you can weigh
+    what the equations cannot see.</p>
+    <p>It cannot promise. Next day direction is genuinely hard: out of sample, honest models land only a little above
+    half right, and stock prices are noisy. Anyone who promises you certain market predictions is not telling
+    the truth.</p>
+    <p>It is not advice. It is a measurement instrument: it reads clues and shows its own track record. What you do with
+    it is up to you.</p>
+  </section>
+
+  <section aria-label="Where to go next">
+    <h2>Where to go next</h2>
+    <p>Ready for the grown up versions? The <a href="/glossary.html">glossary</a> defines every word used on this site.
+    The <a href="/methodology.html">methodology page</a> explains exactly how every number is produced. The
+    <a href="/model.html">models page</a> shows how the two guessers work and how they scored. And the
+    <a href="/">dashboard</a> is the daily report itself.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="cols">
+      <div style="flex:2 1 280px">
+        <h2 translate="no">Premarket India</h2>
+        <p style="max-width:44ch;color:var(--text-muted);font-size:13px">
+          Independent research tool. Not a broker, not an advisor.
+          Nothing here is investment advice; markets can move against any signal.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/">Dashboard</a></li>
+          <li><a href="/stocks.html">Stocks</a></li>
+          <li><a href="/model.html">Models</a></li>
+          <li><a href="/search.html">Search</a></li>
+          <li><a href="/glossary.html">Glossary</a></li>
+          <li><a href="/eli5.html">ELI5</a></li>
+          <li><a href="/api/history">API: history index</a></li>
+          <li><a href="/api/latest">API: latest report</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="/privacy.html">Privacy policy</a></li>
+          <li><a href="/methodology.html#sources">Data sources</a></li>
+          <li><a href="/methodology.html#faq">FAQ</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>Data: CNBC and Yahoo Finance (US indices), Yahoo Finance (India VIX, NIFTY history, global context),
+      TradingView (GIFT Nifty), Nasdaq quote API (per stock page). Prices may be delayed. All data is the property of its
+      respective providers; this project displays snapshots for research and does not redistribute datasets.</p>
+      <p>&copy; 2026 Premarket India. Built to run unattended on Netlify Functions and Blobs.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/chrome.js" defer></script>
+  </body>
+</html>

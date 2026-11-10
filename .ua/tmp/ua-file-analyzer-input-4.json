@@ -1,0 +1,133 @@
+{
+ "projectRoot": "/home/user/netlify-premarket",
+ "batchFiles": [
+  {
+   "path": "netlify/functions/news-scan.mjs",
+   "language": "javascript",
+   "sizeLines": 20,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/post-open-scan.mjs",
+   "language": "javascript",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/scan-background.mjs",
+   "language": "javascript",
+   "sizeLines": 173,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/stocks-adaptive-background.mjs",
+   "language": "javascript",
+   "sizeLines": 41,
+   "fileCategory": "code"
+  },
+  {
+   "path": "netlify/functions/stocks-adaptive.mjs",
+   "language": "javascript",
+   "sizeLines": 23,
+   "fileCategory": "code"
+  },
+  {
+   "path": "test-local.mjs",
+   "language": "javascript",
+   "sizeLines": 19,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/build-model-analysis.mjs",
+   "language": "javascript",
+   "sizeLines": 151,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/build-search-index.mjs",
+   "language": "javascript",
+   "sizeLines": 47,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/make_exhibit.py",
+   "language": "python",
+   "sizeLines": 42,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/pack_model.py",
+   "language": "python",
+   "sizeLines": 90,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/prove-adaptivity.mjs",
+   "language": "javascript",
+   "sizeLines": 39,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/stock_forecasts.py",
+   "language": "python",
+   "sizeLines": 290,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/style-audit.mjs",
+   "language": "javascript",
+   "sizeLines": 70,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/test-local.mjs",
+   "language": "javascript",
+   "sizeLines": 47,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/test-news-engine.mjs",
+   "language": "javascript",
+   "sizeLines": 17,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/test-stocks-engine.mjs",
+   "language": "javascript",
+   "sizeLines": 36,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/timesfm_run.py",
+   "language": "python",
+   "sizeLines": 103,
+   "fileCategory": "code"
+  },
+  {
+   "path": "tools/validate-lstm.mjs",
+   "language": "javascript",
+   "sizeLines": 28,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "netlify/functions/news-scan.mjs": [],
+  "netlify/functions/post-open-scan.mjs": [],
+  "netlify/functions/scan-background.mjs": [],
+  "netlify/functions/stocks-adaptive-background.mjs": [],
+  "netlify/functions/stocks-adaptive.mjs": [],
+  "test-local.mjs": [],
+  "tools/build-model-analysis.mjs": [],
+  "tools/build-search-index.mjs": [],
+  "tools/make_exhibit.py": [],
+  "tools/pack_model.py": [],
+  "tools/prove-adaptivity.mjs": [],
+  "tools/stock_forecasts.py": [],
+  "tools/style-audit.mjs": [],
+  "tools/test-local.mjs": [],
+  "tools/test-news-engine.mjs": [],
+  "tools/test-stocks-engine.mjs": [],
+  "tools/timesfm_run.py": [],
+  "tools/validate-lstm.mjs": []
+ }
+}

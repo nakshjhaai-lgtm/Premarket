@@ -1,0 +1,565 @@
+{
+ "batchFiles": [],
+ "nodes": [
+  {
+   "id": "file:404.html",
+   "type": "file",
+   "name": "Custom 404 page",
+   "filePath": "404.html",
+   "summary": "Branded error page showing the missing URL (filled in by chrome.js) with recovery links to today's report, the glossary and the methodology.",
+   "tags": [
+    "page",
+    "404"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "document:COMPLIANCE.md",
+   "type": "document",
+   "name": "Compliance ledger",
+   "filePath": "COMPLIANCE.md",
+   "summary": "The point by point audit ledger against the original spec document, version by version (v1 through v5.4), including what is deliberately honest versus what is out of scope.",
+   "tags": [
+    "docs",
+    "compliance"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "document:README.md",
+   "type": "document",
+   "name": "Project README",
+   "filePath": "README.md",
+   "summary": "The project manual: what runs every trading day, the LSTM model provenance, TimesFM and the ensemble, the per stock ecosystem, the glossary and ELI5 pages, operations and the v5.4 changelog.",
+   "tags": [
+    "docs"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:eli5.html",
+   "type": "file",
+   "name": "ELI5 page",
+   "filePath": "eli5.html",
+   "summary": "The whole site explained in the simplest possible words, for someone who has never traded. Every jargon word links to the glossary. Works fully without JavaScript.",
+   "tags": [
+    "page",
+    "eli5",
+    "onboarding"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:glossary.html",
+   "type": "file",
+   "name": "Glossary page",
+   "filePath": "glossary.html",
+   "summary": "All 95 terms used anywhere on the site, each with a formal definition and a plain words line, cross linked. Searchable and filterable by category; an A to Z letter index jumps to entries. Rendered client side from glossary-terms.mjs.",
+   "tags": [
+    "page",
+    "glossary"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:index.html",
+   "type": "file",
+   "name": "Dashboard page",
+   "filePath": "index.html",
+   "summary": "The daily report page and the site front door. Renders the plain words summary, the framework bias call, indicator checks, market context, the adaptive ensemble forecast with charts, the TimesFM second opinion, the news and events panel, the HPQ validation exhibit and the report archive. All data comes from /api/latest at runtime; app.js drives it.",
+   "tags": [
+    "page",
+    "dashboard",
+    "entry"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "document:llms.txt",
+   "type": "document",
+   "name": "LLM instructions file",
+   "filePath": "llms.txt",
+   "summary": "Guides AI systems and crawlers: what the site is, the page map, the honest accuracy numbers and the data sources.",
+   "tags": [
+    "docs",
+    "seo"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:methodology.html",
+   "type": "file",
+   "name": "Methodology page",
+   "filePath": "methodology.html",
+   "summary": "How the report is built: every check, the role based framework steps, data sources with their exact endpoints, interpretation thresholds, the 4 daily schedules and a 6 question FAQ. The trust center of the site.",
+   "tags": [
+    "page",
+    "methodology",
+    "trust"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:model.html",
+   "type": "file",
+   "name": "Models page",
+   "filePath": "model.html",
+   "summary": "Deep documentation of the LSTM (architecture, training data, validation against the DataCamp article), TimesFM 2.5, the adaptive ensemble and the per stock ecosystem. Honest limitations section. Static content plus one chart exhibit.",
+   "tags": [
+    "page",
+    "models",
+    "documentation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "config:netlify.toml",
+   "type": "config",
+   "name": "Netlify configuration",
+   "filePath": "netlify.toml",
+   "summary": "Deploy config: publish dir, functions dir, esbuild bundler, the 4 cron schedules (news 03:10, daily 03:30, stocks 03:40, post-open 03:50 UTC) and the global security headers (CSP with the Netlify HUD hash, HSTS, XFO, XCTO, Referrer-Policy, Permissions-Policy, COOP) plus asset cache rules.",
+   "tags": [
+    "config",
+    "deploy",
+    "security"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "config:package.json",
+   "type": "config",
+   "name": "Package manifest",
+   "filePath": "package.json",
+   "summary": "Dev-only dependencies (netlify-cli, playwright) and the test script; the site itself ships zero npm dependencies.",
+   "tags": [
+    "config"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:privacy.html",
+   "type": "file",
+   "name": "Privacy page",
+   "filePath": "privacy.html",
+   "summary": "Plain language privacy policy: no accounts, no tracking, one localStorage key for the theme preference, data ownership of the upstream providers.",
+   "tags": [
+    "page",
+    "privacy",
+    "legal"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "resource:robots.txt",
+   "type": "resource",
+   "name": "Robots file",
+   "filePath": "robots.txt",
+   "summary": "Allows all crawlers, points to the sitemap.",
+   "tags": [
+    "seo"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:search.html",
+   "type": "file",
+   "name": "Site search page",
+   "filePath": "search.html",
+   "summary": "One search box over every page and all 95 glossary terms. The 102 document index (search-index.json) is fetched once and searched locally in the browser; nothing is transmitted.",
+   "tags": [
+    "page",
+    "search"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "resource:sitemap.xml",
+   "type": "resource",
+   "name": "Sitemap",
+   "filePath": "sitemap.xml",
+   "summary": "All 9 pages with change frequencies and priorities.",
+   "tags": [
+    "seo"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "config:skills-lock.json",
+   "type": "config",
+   "name": "Skills lockfile",
+   "filePath": "skills-lock.json",
+   "summary": "Records the agent skills installed into .claude/skills (find-skills, web-design-guidelines, the Understand-Anything suite) for reproducibility.",
+   "tags": [
+    "config",
+    "tooling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:stocks.html",
+   "type": "file",
+   "name": "Stocks page",
+   "filePath": "stocks.html",
+   "summary": "Live adaptive forecasts for 50 symbols (US mega caps, sector leaders, ETFs, global and Indian ADRs). The live table sorts on every column, filters by region and search; collapsed sections hold the decade backtest and the offline TimesFM artifact table. Fetches /api/stocks and /api/news.",
+   "tags": [
+    "page",
+    "stocks",
+    "table"
+   ],
+   "complexity": "complex"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:index.html",
+   "target": "file:assets/app.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:index.html",
+   "target": "file:assets/styles.css",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:stocks.html",
+   "target": "file:assets/stocks-view.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:stocks.html",
+   "target": "file:assets/chrome.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:stocks.html",
+   "target": "file:assets/styles.css",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:glossary.html",
+   "target": "file:assets/glossary-view.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:glossary.html",
+   "target": "file:assets/chrome.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:glossary.html",
+   "target": "file:assets/styles.css",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:eli5.html",
+   "target": "file:assets/chrome.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:eli5.html",
+   "target": "file:assets/styles.css",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:model.html",
+   "target": "file:assets/chrome.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:model.html",
+   "target": "file:assets/styles.css",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:methodology.html",
+   "target": "file:assets/chrome.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:methodology.html",
+   "target": "file:assets/styles.css",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:privacy.html",
+   "target": "file:assets/chrome.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:privacy.html",
+   "target": "file:assets/styles.css",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:search.html",
+   "target": "file:assets/search-view.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:search.html",
+   "target": "file:assets/chrome.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:search.html",
+   "target": "file:assets/styles.css",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:404.html",
+   "target": "file:assets/chrome.js",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:404.html",
+   "target": "file:assets/styles.css",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:index.html",
+   "target": "resource:assets/hpq-article.json",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:index.html",
+   "target": "resource:assets/model-analysis.json",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:stocks.html",
+   "target": "resource:assets/backtest-decade.json",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:stocks.html",
+   "target": "resource:assets/stock-forecasts.json",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:search.html",
+   "target": "resource:assets/search-index.json",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/daily-scan.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/post-open-scan.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/news-scan.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/stocks-adaptive.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/scan-background.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/news-background.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/stocks-adaptive-background.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/api-latest.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/api-history.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/api-report.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/api-news.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/api-stocks.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:netlify.toml",
+   "target": "file:netlify/functions/api-scan.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:package.json",
+   "target": "file:test-local.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "config:package.json",
+   "target": "file:tools/test-local.mjs",
+   "type": "configures",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "document:README.md",
+   "target": "file:lib/scan.mjs",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.4
+  },
+  {
+   "source": "document:README.md",
+   "target": "file:lib/ensemble.mjs",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.4
+  },
+  {
+   "source": "document:README.md",
+   "target": "file:lib/lstm.mjs",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.4
+  },
+  {
+   "source": "document:README.md",
+   "target": "file:lib/stocks-engine.mjs",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.4
+  },
+  {
+   "source": "document:README.md",
+   "target": "file:lib/news-engine.mjs",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.4
+  },
+  {
+   "source": "document:README.md",
+   "target": "config:netlify.toml",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.4
+  },
+  {
+   "source": "document:COMPLIANCE.md",
+   "target": "document:README.md",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.4
+  },
+  {
+   "source": "document:llms.txt",
+   "target": "file:index.html",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.4
+  },
+  {
+   "source": "document:llms.txt",
+   "target": "file:search.html",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.4
+  }
+ ],
+ "notes": "Authored by the project author as the file-analyzer agent (Understand-Anything Phase 2)."
+}

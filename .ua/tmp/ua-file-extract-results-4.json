@@ -1,0 +1,2134 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 18,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 18,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "netlify/functions/news-scan.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 20,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "netlify/functions/post-open-scan.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "netlify/functions/scan-background.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 173,
+      "nonEmptyLines": 158,
+      "functions": [
+        {
+          "name": "storeReport",
+          "startLine": 19,
+          "endLine": 42,
+          "params": [
+            "store",
+            "report"
+          ]
+        },
+        {
+          "name": "callDirection",
+          "startLine": 46,
+          "endLine": 51,
+          "params": [
+            "classification"
+          ]
+        },
+        {
+          "name": "summaryFrom",
+          "startLine": 53,
+          "endLine": 63,
+          "params": [
+            "sc"
+          ]
+        },
+        {
+          "name": "frameworkSummary",
+          "startLine": 65,
+          "endLine": 77,
+          "params": [
+            "store"
+          ]
+        },
+        {
+          "name": "updateFrameworkScorecard",
+          "startLine": 79,
+          "endLine": 98,
+          "params": [
+            "store",
+            "report",
+            "conf"
+          ]
+        },
+        {
+          "name": "cacheAdapter",
+          "startLine": 101,
+          "endLine": 106,
+          "params": [
+            "store"
+          ]
+        },
+        {
+          "name": "scanWithEnsemble",
+          "startLine": 109,
+          "endLine": 119,
+          "params": [
+            "store"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "storeReport",
+          "callee": "toMarkdown",
+          "lineNumber": 20
+        },
+        {
+          "caller": "storeReport",
+          "callee": "toHtml",
+          "lineNumber": 21
+        },
+        {
+          "caller": "storeReport",
+          "callee": "JSON.stringify",
+          "lineNumber": 22
+        },
+        {
+          "caller": "storeReport",
+          "callee": "Promise.all",
+          "lineNumber": 23
+        },
+        {
+          "caller": "storeReport",
+          "callee": "store.set",
+          "lineNumber": 24
+        },
+        {
+          "caller": "storeReport",
+          "callee": "store.set",
+          "lineNumber": 25
+        },
+        {
+          "caller": "storeReport",
+          "callee": "store.set",
+          "lineNumber": 26
+        },
+        {
+          "caller": "storeReport",
+          "callee": "store.set",
+          "lineNumber": 27
+        },
+        {
+          "caller": "storeReport",
+          "callee": "store.set",
+          "lineNumber": 28
+        },
+        {
+          "caller": "storeReport",
+          "callee": "store.set",
+          "lineNumber": 29
+        },
+        {
+          "caller": "storeReport",
+          "callee": "JSON.parse",
+          "lineNumber": 33
+        },
+        {
+          "caller": "storeReport",
+          "callee": "store.get",
+          "lineNumber": 33
+        },
+        {
+          "caller": "storeReport",
+          "callee": "Array.isArray",
+          "lineNumber": 34
+        },
+        {
+          "caller": "storeReport",
+          "callee": "hist.filter",
+          "lineNumber": 35
+        },
+        {
+          "caller": "storeReport",
+          "callee": "hist.unshift",
+          "lineNumber": 36
+        },
+        {
+          "caller": "storeReport",
+          "callee": "store.set",
+          "lineNumber": 41
+        },
+        {
+          "caller": "storeReport",
+          "callee": "JSON.stringify",
+          "lineNumber": 41
+        },
+        {
+          "caller": "storeReport",
+          "callee": "hist.slice",
+          "lineNumber": 41
+        },
+        {
+          "caller": "callDirection",
+          "callee": "/^Positive/i.test",
+          "lineNumber": 48
+        },
+        {
+          "caller": "callDirection",
+          "callee": "/^Negative/i.test",
+          "lineNumber": 49
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "Array.isArray",
+          "lineNumber": 54
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "sc.entries.filter",
+          "lineNumber": 55
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "(100 * done.filter((e) => e.hit).length / done.length).toFixed",
+          "lineNumber": 59
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "done.filter",
+          "lineNumber": 59
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "(100 * done.slice(-20).filter((e) => e.hit).length / Math.min(20, done.length)).toFixed",
+          "lineNumber": 60
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "done.slice(-20).filter",
+          "lineNumber": 60
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "done.slice",
+          "lineNumber": 60
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "Math.min",
+          "lineNumber": 60
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "done.slice(-5).map",
+          "lineNumber": 61
+        },
+        {
+          "caller": "summaryFrom",
+          "callee": "done.slice",
+          "lineNumber": 61
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "JSON.parse",
+          "lineNumber": 67
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "store.get",
+          "lineNumber": 67
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "summaryFrom",
+          "lineNumber": 68
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "sc.entries.filter",
+          "lineNumber": 69
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "(100 * done.filter((e) => e.hit).length / done.length).toFixed",
+          "lineNumber": 73
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "done.filter",
+          "lineNumber": 73
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "(100 * done.slice(-20).filter((e) => e.hit).length / Math.min(20, done.length)).toFixed",
+          "lineNumber": 74
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "done.slice(-20).filter",
+          "lineNumber": 74
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "done.slice",
+          "lineNumber": 74
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "Math.min",
+          "lineNumber": 74
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "done.slice(-5).map",
+          "lineNumber": 75
+        },
+        {
+          "caller": "frameworkSummary",
+          "callee": "done.slice",
+          "lineNumber": 75
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "JSON.parse",
+          "lineNumber": 81
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "store.get",
+          "lineNumber": 81
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "Array.isArray",
+          "lineNumber": 82
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "sc.entries.find",
+          "lineNumber": 85
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "callDirection",
+          "lineNumber": 90
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "sc.entries.includes",
+          "lineNumber": 94
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "sc.entries.push",
+          "lineNumber": 94
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "sc.entries.sort((a, b) => (a.d < b.d ? -1 : 1)).slice",
+          "lineNumber": 95
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "sc.entries.sort",
+          "lineNumber": 95
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "store.set",
+          "lineNumber": 96
+        },
+        {
+          "caller": "updateFrameworkScorecard",
+          "callee": "JSON.stringify",
+          "lineNumber": 96
+        },
+        {
+          "caller": "get",
+          "callee": "store.get",
+          "lineNumber": 103
+        },
+        {
+          "caller": "set",
+          "callee": "store.set",
+          "lineNumber": 104
+        },
+        {
+          "caller": "scanWithEnsemble",
+          "callee": "loadScorecard",
+          "lineNumber": 110
+        },
+        {
+          "caller": "scanWithEnsemble",
+          "callee": "artifactParams",
+          "lineNumber": 111
+        },
+        {
+          "caller": "scanWithEnsemble",
+          "callee": "runScan",
+          "lineNumber": 112
+        },
+        {
+          "caller": "scanWithEnsemble",
+          "callee": "cacheAdapter",
+          "lineNumber": 112
+        },
+        {
+          "caller": "scanWithEnsemble",
+          "callee": "updateScorecard",
+          "lineNumber": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "netlify/functions/stocks-adaptive-background.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 39,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "netlify/functions/stocks-adaptive.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 23,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "test-local.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 17,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/build-model-analysis.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 151,
+      "nonEmptyLines": 139,
+      "functions": [
+        {
+          "name": "stats",
+          "startLine": 47,
+          "endLine": 57,
+          "params": [
+            "preds"
+          ]
+        },
+        {
+          "name": "learn",
+          "startLine": 67,
+          "endLine": 81,
+          "params": [
+            "idx"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "stats",
+          "callee": "Math.abs",
+          "lineNumber": 51
+        },
+        {
+          "caller": "stats",
+          "callee": "(Math.sqrt(se / W)).toFixed",
+          "lineNumber": 55
+        },
+        {
+          "caller": "stats",
+          "callee": "Math.sqrt",
+          "lineNumber": 55
+        },
+        {
+          "caller": "stats",
+          "callee": "(ae / W).toFixed",
+          "lineNumber": 55
+        },
+        {
+          "caller": "stats",
+          "callee": "(hits / W).toFixed",
+          "lineNumber": 56
+        },
+        {
+          "caller": "learn",
+          "callee": "Math.sqrt",
+          "lineNumber": 77
+        },
+        {
+          "caller": "learn",
+          "callee": "w.toFixed",
+          "lineNumber": 78
+        },
+        {
+          "caller": "learn",
+          "callee": "rmse.toFixed",
+          "lineNumber": 78
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/build-search-index.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "strip",
+          "startLine": 16,
+          "endLine": 27,
+          "params": [
+            "html"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace(/<[^>]+>/g, ' ')\n  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&copy;/g, '(c)')\n  .replace(/&middot;/g, '·').replace(/&hellip;/g, '…').replace(/&#[x0-9a-f]+;/gi, ' ')\n  .replace(/[ \\t]+/g, ' ')\n  .replace(/\\n\\s*\\n+/g, '\\n')\n  .trim",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace(/<[^>]+>/g, ' ')\n  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&copy;/g, '(c)')\n  .replace(/&middot;/g, '·').replace(/&hellip;/g, '…').replace(/&#[x0-9a-f]+;/gi, ' ')\n  .replace(/[ \\t]+/g, ' ')\n  .replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace(/<[^>]+>/g, ' ')\n  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&copy;/g, '(c)')\n  .replace(/&middot;/g, '·').replace(/&hellip;/g, '…').replace(/&#[x0-9a-f]+;/gi, ' ')\n  .replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace(/<[^>]+>/g, ' ')\n  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&copy;/g, '(c)')\n  .replace(/&middot;/g, '·').replace(/&hellip;/g, '…').replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace(/<[^>]+>/g, ' ')\n  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&copy;/g, '(c)')\n  .replace(/&middot;/g, '·').replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace(/<[^>]+>/g, ' ')\n  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&copy;/g, '(c)')\n  .replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace(/<[^>]+>/g, ' ')\n  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace(/<[^>]+>/g, ' ')\n  .replace(/&nbsp;/g, ' ').replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace(/<[^>]+>/g, ' ')\n  .replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<\\/(p|li|h[1-6]|tr|div|section|summary|details|figcaption)>/g, '\\n')\n  .replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/g, ' ')\n  .replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/g, ' ')\n  .replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace(/<script[\\s\\S]*?<\\/script>/g, ' ')\n  .replace",
+          "lineNumber": 16
+        },
+        {
+          "caller": "strip",
+          "callee": "html\n  .replace",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/make_exhibit.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 42,
+      "nonEmptyLines": 39,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/pack_model.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 80,
+      "functions": [
+        {
+          "name": "flat",
+          "startLine": 33,
+          "endLine": 36,
+          "params": [
+            "x"
+          ]
+        },
+        {
+          "name": "shape",
+          "startLine": 39,
+          "endLine": 42,
+          "params": [
+            "x"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 45,
+          "endLine": 86,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "flat",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "shape",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 45,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "flat",
+          "callee": "isinstance",
+          "lineNumber": 34
+        },
+        {
+          "caller": "flat",
+          "callee": "isinstance",
+          "lineNumber": 34
+        },
+        {
+          "caller": "flat",
+          "callee": "list",
+          "lineNumber": 36
+        },
+        {
+          "caller": "shape",
+          "callee": "isinstance",
+          "lineNumber": 40
+        },
+        {
+          "caller": "shape",
+          "callee": "isinstance",
+          "lineNumber": 40
+        },
+        {
+          "caller": "shape",
+          "callee": "len",
+          "lineNumber": 41
+        },
+        {
+          "caller": "shape",
+          "callee": "len",
+          "lineNumber": 41
+        },
+        {
+          "caller": "shape",
+          "callee": "len",
+          "lineNumber": 42
+        },
+        {
+          "caller": "main",
+          "callee": "json.load",
+          "lineNumber": 47
+        },
+        {
+          "caller": "main",
+          "callee": "open",
+          "lineNumber": 47
+        },
+        {
+          "caller": "main",
+          "callee": "FALLBACK.get",
+          "lineNumber": 49
+        },
+        {
+          "caller": "main",
+          "callee": "resolve",
+          "lineNumber": 50
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 52
+        },
+        {
+          "caller": "main",
+          "callee": "sorted",
+          "lineNumber": 52
+        },
+        {
+          "caller": "main",
+          "callee": "weights.keys",
+          "lineNumber": 52
+        },
+        {
+          "caller": "main",
+          "callee": "SystemExit",
+          "lineNumber": 53
+        },
+        {
+          "caller": "main",
+          "callee": "resolve",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "flat",
+          "lineNumber": 57
+        },
+        {
+          "caller": "main",
+          "callee": "blobs.append",
+          "lineNumber": 58
+        },
+        {
+          "caller": "main",
+          "callee": "struct.pack",
+          "lineNumber": 58
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 58
+        },
+        {
+          "caller": "main",
+          "callee": "layout.append",
+          "lineNumber": 59
+        },
+        {
+          "caller": "main",
+          "callee": "shape",
+          "lineNumber": 59
+        },
+        {
+          "caller": "main",
+          "callee": "base64.b64encode(b\"\".join(blobs)).decode",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "base64.b64encode",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "b\"\".join",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 62
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 63
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 65
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 66
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 67
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 68
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 69
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 70
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 71
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 73
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 75
+        },
+        {
+          "caller": "main",
+          "callee": "model[\"meta\"].get",
+          "lineNumber": 76
+        },
+        {
+          "caller": "main",
+          "callee": "open",
+          "lineNumber": 78
+        },
+        {
+          "caller": "main",
+          "callee": "f.write",
+          "lineNumber": 79
+        },
+        {
+          "caller": "main",
+          "callee": "f.write",
+          "lineNumber": 80
+        },
+        {
+          "caller": "main",
+          "callee": "f.write",
+          "lineNumber": 81
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 81
+        },
+        {
+          "caller": "main",
+          "callee": "f.write",
+          "lineNumber": 82
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 82
+        },
+        {
+          "caller": "main",
+          "callee": "f.write",
+          "lineNumber": 83
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 83
+        },
+        {
+          "caller": "main",
+          "callee": "f.write",
+          "lineNumber": 84
+        },
+        {
+          "caller": "main",
+          "callee": "f.write",
+          "lineNumber": 85
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 86
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 86
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/prove-adaptivity.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 35,
+      "functions": [
+        {
+          "name": "makeStore",
+          "startLine": 7,
+          "endLine": 8,
+          "params": []
+        },
+        {
+          "name": "run",
+          "startLine": 14,
+          "endLine": 35,
+          "params": [
+            "name",
+            "lstmErrs",
+            "tfErrs",
+            "nSessions"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "makeStore",
+          "callee": "m.has",
+          "lineNumber": 8
+        },
+        {
+          "caller": "makeStore",
+          "callee": "m.get",
+          "lineNumber": 8
+        },
+        {
+          "caller": "makeStore",
+          "callee": "m.set",
+          "lineNumber": 8
+        },
+        {
+          "caller": "run",
+          "callee": "dates.slice",
+          "lineNumber": 15
+        },
+        {
+          "caller": "run",
+          "callee": "actual.slice",
+          "lineNumber": 15
+        },
+        {
+          "caller": "run",
+          "callee": "makeStore",
+          "lineNumber": 16
+        },
+        {
+          "caller": "run",
+          "callee": "store.set",
+          "lineNumber": 17
+        },
+        {
+          "caller": "run",
+          "callee": "JSON.stringify",
+          "lineNumber": 17
+        },
+        {
+          "caller": "run",
+          "callee": "ds.map",
+          "lineNumber": 17
+        },
+        {
+          "caller": "run",
+          "callee": "ds.map((d, i) => ({ d, close: ac[i] })).concat",
+          "lineNumber": 23
+        },
+        {
+          "caller": "run",
+          "callee": "ds.map",
+          "lineNumber": 23
+        },
+        {
+          "caller": "run",
+          "callee": "updateScorecard(store, pred).then",
+          "lineNumber": 28
+        },
+        {
+          "caller": "run",
+          "callee": "updateScorecard",
+          "lineNumber": 28
+        },
+        {
+          "caller": "run",
+          "callee": "JSON.parse",
+          "lineNumber": 29
+        },
+        {
+          "caller": "run",
+          "callee": "store.get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "run",
+          "callee": "artifactParams",
+          "lineNumber": 30
+        },
+        {
+          "caller": "run",
+          "callee": "console.log",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/stock_forecasts.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 290,
+      "nonEmptyLines": 263,
+      "functions": [
+        {
+          "name": "_http_json",
+          "startLine": 99,
+          "endLine": 102,
+          "params": [
+            "url",
+            "timeout"
+          ]
+        },
+        {
+          "name": "fetch_nasdaq",
+          "startLine": 104,
+          "endLine": 124,
+          "params": [
+            "sym"
+          ]
+        },
+        {
+          "name": "fetch_yahoo",
+          "startLine": 126,
+          "endLine": 136,
+          "params": [
+            "sym",
+            "host"
+          ]
+        },
+        {
+          "name": "fetch_alphavantage",
+          "startLine": 140,
+          "endLine": 149,
+          "params": [
+            "sym"
+          ]
+        },
+        {
+          "name": "_from_eod_file",
+          "startLine": 151,
+          "endLine": 159,
+          "params": []
+        },
+        {
+          "name": "load_data_compat",
+          "startLine": 161,
+          "endLine": 192,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 194,
+          "endLine": 287,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_http_json",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "fetch_nasdaq",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "fetch_yahoo",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "fetch_alphavantage",
+          "line": 140,
+          "isDefault": false
+        },
+        {
+          "name": "_from_eod_file",
+          "line": 151,
+          "isDefault": false
+        },
+        {
+          "name": "load_data_compat",
+          "line": 161,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 194,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_http_json",
+          "callee": "urllib.request.Request",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_http_json",
+          "callee": "_opener.open",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_http_json",
+          "callee": "json.load",
+          "lineNumber": 102
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "NASDAQ_SYM.get",
+          "lineNumber": 106
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "dt.date.today",
+          "lineNumber": 108
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "dt.timedelta",
+          "lineNumber": 109
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "int",
+          "lineNumber": 109
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "urllib.parse.quote",
+          "lineNumber": 110
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "start.isoformat",
+          "lineNumber": 111
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "end.isoformat",
+          "lineNumber": 111
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "_http_json",
+          "lineNumber": 112
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "((j.get(\"data\") or {}).get(\"tradesTable\") or {}).get",
+          "lineNumber": 113
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "(j.get(\"data\") or {}).get",
+          "lineNumber": 113
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "j.get",
+          "lineNumber": 113
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "r.get",
+          "lineNumber": 116
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "str(r.get(\"close\", \"\")).replace(\"$\", \"\").replace",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "str(r.get(\"close\", \"\")).replace",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "str",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "r.get",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "d.split",
+          "lineNumber": 119
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "out.append",
+          "lineNumber": 120
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "int",
+          "lineNumber": 120
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "int",
+          "lineNumber": 120
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "float",
+          "lineNumber": 120
+        },
+        {
+          "caller": "fetch_nasdaq",
+          "callee": "out.reverse",
+          "lineNumber": 123
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "int",
+          "lineNumber": 127
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "(dt.datetime.now() - dt.timedelta(days=365 * YEARS_BACK)).timestamp",
+          "lineNumber": 127
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "dt.datetime.now",
+          "lineNumber": 127
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "dt.timedelta",
+          "lineNumber": 127
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "urllib.parse.quote",
+          "lineNumber": 128
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "int",
+          "lineNumber": 129
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "dt.datetime.now().timestamp",
+          "lineNumber": 129
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "dt.datetime.now",
+          "lineNumber": 129
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "urllib.request.Request",
+          "lineNumber": 130
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "_opener.open",
+          "lineNumber": 131
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "json.load",
+          "lineNumber": 132
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "dt.datetime.fromtimestamp(t, dt.timezone.utc).date().isoformat",
+          "lineNumber": 135
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "dt.datetime.fromtimestamp(t, dt.timezone.utc).date",
+          "lineNumber": 135
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "dt.datetime.fromtimestamp",
+          "lineNumber": 135
+        },
+        {
+          "caller": "fetch_yahoo",
+          "callee": "enumerate",
+          "lineNumber": 136
+        },
+        {
+          "caller": "fetch_alphavantage",
+          "callee": "os.environ.get",
+          "lineNumber": 142
+        },
+        {
+          "caller": "fetch_alphavantage",
+          "callee": "RuntimeError",
+          "lineNumber": 144
+        },
+        {
+          "caller": "fetch_alphavantage",
+          "callee": "_http_json",
+          "lineNumber": 146
+        },
+        {
+          "caller": "fetch_alphavantage",
+          "callee": "urllib.parse.quote",
+          "lineNumber": 147
+        },
+        {
+          "caller": "fetch_alphavantage",
+          "callee": "j.get",
+          "lineNumber": 148
+        },
+        {
+          "caller": "fetch_alphavantage",
+          "callee": "sorted",
+          "lineNumber": 149
+        },
+        {
+          "caller": "fetch_alphavantage",
+          "callee": "float",
+          "lineNumber": 149
+        },
+        {
+          "caller": "fetch_alphavantage",
+          "callee": "ts.items",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "os.path.exists",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "json.load",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "open",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "raw.items",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "(dt.date(1970, 1, 1) + dt.timedelta(days=int(d))).isoformat",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "dt.date",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "dt.timedelta",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "int",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "float",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "print",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_from_eod_file",
+          "callee": "len",
+          "lineNumber": 158
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "_from_eod_file",
+          "lineNumber": 163
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "enumerate",
+          "lineNumber": 167
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "range",
+          "lineNumber": 171
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "fn",
+          "lineNumber": 173
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "fn",
+          "lineNumber": 173
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "len",
+          "lineNumber": 174
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "RuntimeError",
+          "lineNumber": 175
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "len",
+          "lineNumber": 175
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "str",
+          "lineNumber": 179
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "getattr",
+          "lineNumber": 179
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "time.sleep",
+          "lineNumber": 181
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "random.random",
+          "lineNumber": 181
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "print",
+          "lineNumber": 183
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "len",
+          "lineNumber": 184
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "len",
+          "lineNumber": 186
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "print",
+          "lineNumber": 188
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "len",
+          "lineNumber": 188
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "len",
+          "lineNumber": 188
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "print",
+          "lineNumber": 190
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "len",
+          "lineNumber": 190
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "time.sleep",
+          "lineNumber": 191
+        },
+        {
+          "caller": "load_data_compat",
+          "callee": "random.random",
+          "lineNumber": 191
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 198
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 198
+        },
+        {
+          "caller": "main",
+          "callee": "load_data_compat",
+          "lineNumber": 199
+        },
+        {
+          "caller": "main",
+          "callee": "SystemExit",
+          "lineNumber": 201
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 203
+        },
+        {
+          "caller": "main",
+          "callee": "timesfm.TimesFM_2p5_200M_torch.from_pretrained",
+          "lineNumber": 204
+        },
+        {
+          "caller": "main",
+          "callee": "model.compile",
+          "lineNumber": 206
+        },
+        {
+          "caller": "main",
+          "callee": "timesfm.ForecastConfig",
+          "lineNumber": 206
+        },
+        {
+          "caller": "batch_forecast",
+          "callee": "range",
+          "lineNumber": 213
+        },
+        {
+          "caller": "batch_forecast",
+          "callee": "len",
+          "lineNumber": 213
+        },
+        {
+          "caller": "batch_forecast",
+          "callee": "model.forecast",
+          "lineNumber": 214
+        },
+        {
+          "caller": "batch_forecast",
+          "callee": "out.extend",
+          "lineNumber": 215
+        },
+        {
+          "caller": "batch_forecast",
+          "callee": "np.asarray",
+          "lineNumber": 215
+        },
+        {
+          "caller": "main",
+          "callee": "list",
+          "lineNumber": 218
+        },
+        {
+          "caller": "main",
+          "callee": "dt.datetime.now",
+          "lineNumber": 220
+        },
+        {
+          "caller": "main",
+          "callee": "batch_forecast",
+          "lineNumber": 221
+        },
+        {
+          "caller": "main",
+          "callee": "np.asarray",
+          "lineNumber": 221
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 223
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 223
+        },
+        {
+          "caller": "main",
+          "callee": "(dt.datetime.now()-t0).total_seconds",
+          "lineNumber": 223
+        },
+        {
+          "caller": "main",
+          "callee": "dt.datetime.now",
+          "lineNumber": 223
+        },
+        {
+          "caller": "main",
+          "callee": "dt.datetime.now",
+          "lineNumber": 226
+        },
+        {
+          "caller": "main",
+          "callee": "range",
+          "lineNumber": 230
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 230
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 230
+        },
+        {
+          "caller": "main",
+          "callee": "bt_ctx.append",
+          "lineNumber": 231
+        },
+        {
+          "caller": "main",
+          "callee": "np.asarray",
+          "lineNumber": 231
+        },
+        {
+          "caller": "main",
+          "callee": "max",
+          "lineNumber": 231
+        },
+        {
+          "caller": "main",
+          "callee": "bt_owner.append",
+          "lineNumber": 232
+        },
+        {
+          "caller": "main",
+          "callee": "batch_forecast",
+          "lineNumber": 233
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 234
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 234
+        },
+        {
+          "caller": "main",
+          "callee": "(dt.datetime.now()-t0).total_seconds",
+          "lineNumber": 234
+        },
+        {
+          "caller": "main",
+          "callee": "dt.datetime.now",
+          "lineNumber": 234
+        },
+        {
+          "caller": "main",
+          "callee": "zip",
+          "lineNumber": 236
+        },
+        {
+          "caller": "main",
+          "callee": "bt[s].append",
+          "lineNumber": 237
+        },
+        {
+          "caller": "main",
+          "callee": "float",
+          "lineNumber": 237
+        },
+        {
+          "caller": "next_days",
+          "callee": "dt.date.fromisoformat",
+          "lineNumber": 240
+        },
+        {
+          "caller": "next_days",
+          "callee": "len",
+          "lineNumber": 241
+        },
+        {
+          "caller": "next_days",
+          "callee": "dt.timedelta",
+          "lineNumber": 242
+        },
+        {
+          "caller": "next_days",
+          "callee": "d.weekday",
+          "lineNumber": 243
+        },
+        {
+          "caller": "next_days",
+          "callee": "out.append",
+          "lineNumber": 244
+        },
+        {
+          "caller": "next_days",
+          "callee": "d.isoformat",
+          "lineNumber": 244
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 253
+        },
+        {
+          "caller": "main",
+          "callee": "float",
+          "lineNumber": 253
+        },
+        {
+          "caller": "main",
+          "callee": "syms.index",
+          "lineNumber": 253
+        },
+        {
+          "caller": "main",
+          "callee": "sum",
+          "lineNumber": 259
+        },
+        {
+          "caller": "main",
+          "callee": "zip",
+          "lineNumber": 259
+        },
+        {
+          "caller": "main",
+          "callee": "sum",
+          "lineNumber": 260
+        },
+        {
+          "caller": "main",
+          "callee": "zip",
+          "lineNumber": 260
+        },
+        {
+          "caller": "main",
+          "callee": "stocks.append",
+          "lineNumber": 261
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 264
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 265
+        },
+        {
+          "caller": "main",
+          "callee": "next_days",
+          "lineNumber": 267
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 268
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 269
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 270
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 272
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 274
+        },
+        {
+          "caller": "main",
+          "callee": "stocks.sort",
+          "lineNumber": 277
+        },
+        {
+          "caller": "main",
+          "callee": "max",
+          "lineNumber": 279
+        },
+        {
+          "caller": "main",
+          "callee": "dt.datetime.now(dt.timezone.utc).isoformat",
+          "lineNumber": 280
+        },
+        {
+          "caller": "main",
+          "callee": "dt.datetime.now",
+          "lineNumber": 280
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 282
+        },
+        {
+          "caller": "main",
+          "callee": "json.dump",
+          "lineNumber": 286
+        },
+        {
+          "caller": "main",
+          "callee": "open",
+          "lineNumber": 286
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 287
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 287
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/style-audit.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 67,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/test-local.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/test-news-engine.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/test-stocks-engine.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "makeStore",
+          "startLine": 4,
+          "endLine": 8,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "makeStore",
+          "callee": "m.has",
+          "lineNumber": 5
+        },
+        {
+          "caller": "makeStore",
+          "callee": "m.get",
+          "lineNumber": 5
+        },
+        {
+          "caller": "makeStore",
+          "callee": "m.set",
+          "lineNumber": 6
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/timesfm_run.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 103,
+      "nonEmptyLines": 92,
+      "functions": [
+        {
+          "name": "batch_forecast",
+          "startLine": 51,
+          "endLine": 58,
+          "params": [
+            "contexts",
+            "horizon"
+          ]
+        },
+        {
+          "name": "next_days",
+          "startLine": 79,
+          "endLine": 85,
+          "params": [
+            "last",
+            "n"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "batch_forecast",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "next_days",
+          "line": 79,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "batch_forecast",
+          "callee": "range",
+          "lineNumber": 54
+        },
+        {
+          "caller": "batch_forecast",
+          "callee": "len",
+          "lineNumber": 54
+        },
+        {
+          "caller": "batch_forecast",
+          "callee": "model.forecast",
+          "lineNumber": 56
+        },
+        {
+          "caller": "batch_forecast",
+          "callee": "out.extend",
+          "lineNumber": 57
+        },
+        {
+          "caller": "batch_forecast",
+          "callee": "np.asarray",
+          "lineNumber": 57
+        },
+        {
+          "caller": "next_days",
+          "callee": "dt.date.fromisoformat",
+          "lineNumber": 80
+        },
+        {
+          "caller": "next_days",
+          "callee": "len",
+          "lineNumber": 81
+        },
+        {
+          "caller": "next_days",
+          "callee": "dt.timedelta",
+          "lineNumber": 82
+        },
+        {
+          "caller": "next_days",
+          "callee": "d.weekday",
+          "lineNumber": 83
+        },
+        {
+          "caller": "next_days",
+          "callee": "out.append",
+          "lineNumber": 84
+        },
+        {
+          "caller": "next_days",
+          "callee": "d.isoformat",
+          "lineNumber": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/validate-lstm.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 25,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

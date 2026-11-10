@@ -1,0 +1,17 @@
+[09:27:32] building libffi 3.3 (static + shared)
+[09:27:39] libffi 3.3 -> libffi.a libffi.la libffi.so libffi.so.7 libffi.so.7.1.0 pkgconfig 
+[09:27:39] building OpenSSL 1.1.1w (CPython 3.6 cannot use OpenSSL 3.x)
+[09:28:37] OpenSSL -> 
+[09:28:37] building CPython 3.6.15
+[09:28:38] patched mathmodule.c sinpi -> m_sinpi (glibc 2.41 collision)
+[09:30:15] python installed: 3.6.15
+[09:30:15] relinking _ctypes against libffi 3.3
+[09:30:36] _ctypes links: 	libffi.so.7 => /home/user/opt/libffi33/lib/libffi.so.7 (0x00007efc80952000)
+[09:30:36] ctypes closure test (5x)
+[09:30:36]   ctypes passed 5/5
+[09:30:36] bootstrapping pip 21.3.1 by unzip
+pip 21.3.1 from /home/user/opt/py36/lib/python3.6/site-packages/pip (python 3.6)
+[09:30:38] installing TensorFlow 1.6.0 + tutorial deps (offline)
+[09:30:39] FAIL pip install
+ERROR: Could not find a version that satisfies the requirement tensorflow==1.6.0 (from versions: none)
+ERROR: No matching distribution found for tensorflow==1.6.0

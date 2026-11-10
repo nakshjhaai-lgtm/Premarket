@@ -1,0 +1,47 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Scheduled scans (IST = UTC+5:30):
+#   daily-scan    03:30 UTC = 09:00 IST — full pre-market report (framework v2)
+#   post-open-scan 03:50 UTC = 09:20 IST — confirmation snapshot after the bell
+#   news-scan      03:10 UTC = 08:40 IST Mon-Sat — headlines, earnings calendar, event flags
+#   stocks-adaptive 03:40 UTC = 09:10 IST Mon-Sat — per stock learning cycle
+#     (Saturday run catches the Friday US close)
+# The handlers skip IST weekends themselves.
+[functions."daily-scan"]
+  schedule = "30 3 * * 1-5"
+
+[functions."post-open-scan"]
+  schedule = "50 3 * * 1-5"
+
+[functions."stocks-adaptive"]
+  schedule = "40 3 * * 1-6"
+
+[functions."news-scan"]
+  schedule = "10 3 * * 1-6"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # the sha256 permits ONLY Netlify's injected HUD widget (exact bytes); it is not 'unsafe-inline'
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-BkKP2XO6WOEc3kXOiLr2ZoY83hamalKjPY9xBcbXVuw='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    X-Frame-Options = "DENY"
+    Cross-Origin-Opener-Policy = "same-origin"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"

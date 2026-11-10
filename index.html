@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>India Premarket Intelligence: daily 09:00 IST report</title>
+<meta name="description" content="Free daily premarket report for NSE trading: overnight US indices, India VIX, NIFTY breadth, GIFT Nifty implied open, oil, gold, rates and FX context, and an adaptive TimesFM plus LSTM ensemble forecast. Generated at 09:00 IST, before the 09:15 open.">
+<link rel="canonical" href="https://premarket-india-report.netlify.app/">
+<meta name="theme-color" content="#f5f6f8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="India Premarket Intelligence">
+<meta property="og:title" content="India Premarket Intelligence: daily 09:00 IST report">
+<meta property="og:description" content="Overnight US cues, India VIX, breadth, GIFT Nifty implied open, global context, and an adaptive ensemble forecast, before the bell.">
+<meta property="og:url" content="https://premarket-india-report.netlify.app/">
+<meta property="og:image" content="https://premarket-india-report.netlify.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/styles.css">
+<script type="module" src="/assets/app.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "India Premarket Intelligence",
+  "url": "https://premarket-india-report.netlify.app/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any (web)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+  "description": "Daily automated premarket report for Indian equity traders, generated at 09:00 IST: overnight US indices, India VIX, NIFTY advance and decline breadth, GIFT Nifty implied open, oil, gold, USD INR, US 10 year yield and Asia context, and an adaptive ensemble forecast for NIFTY 50.",
+  "featureList": ["Daily scheduled scan at 09:00 IST", "Signal score from minus 5 to plus 5", "Implied open from GIFT Nifty", "Market context: oil, gold, INR, US 10 year, Asia", "Adaptive ensemble NIFTY forecast (TimesFM 2.5 plus live LSTM, learned blend)", "Per stock TimesFM forecasts for 50 US, global and Indian ADR symbols", "LSTM 5 session NIFTY forecast with rolling backtest", "Report archive and history", "Full glossary and an ELI5 guide"]
+}
+</script>
+<noscript><style>@media (max-width:919px){.nav-links{display:flex!important;flex-wrap:wrap}.nav-toggle{display:none!important}}</style></noscript>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="India Premarket Intelligence, home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#0e6e78"/>
+        <path d="M6 22 L12 14 L16 18 L22 8 L26 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="22" cy="8" r="2.4" fill="#fff"/>
+      </svg>
+      <span translate="no">Premarket India<small>daily intelligence before the 09:15 open</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <button class="icon-btn nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="/" aria-current="page">Dashboard</a>
+        <a class="nav-link" href="/stocks.html">Stocks</a>
+        <a class="nav-link" href="/model.html">Models</a>
+        <a class="nav-link" href="/methodology.html">Methodology</a>
+        <a class="nav-link" href="/glossary.html">Glossary</a>
+        <a class="nav-link" href="/eli5.html">ELI5</a>
+        <a class="nav-link" href="/privacy.html">Privacy</a>
+        <button class="icon-btn" id="theme-toggle" aria-label="Switch light/dark theme" title="Switch light/dark theme">
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:24px 0 16px">
+    <h1 style="margin:0">Today's premarket read</h1>
+    <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn secondary" id="copy-report" type="button"><span class="label">Copy report</span></button>
+      <button class="btn" id="run-scan" type="button"><span class="spinner" aria-hidden="true"></span><span class="label">Run scan now</span></button>
+    </div>
+  </div>
+  <p class="status-line" id="status" role="status" aria-live="polite">Loading latest report…</p>
+  <div id="plain-words" class="plain-words" hidden></div>
+  <div id="freshness" class="freshness-strip" role="status" aria-label="Data freshness by source" hidden></div>
+  <p class="intro-strip">New here? This page shows what the Indian market is likely to do at 09:15.
+    Read the <a href="/eli5.html">2 minute plain English guide</a>, or
+    <a href="/glossary.html">tap any blue term</a> for its meaning.</p>
+  <p class="src" id="last-updated"></p>
+
+  <noscript>
+    <div class="empty-state" style="margin-bottom:24px">
+      <b>JavaScript is off.</b> The live report needs JS to fetch data, but everything is available as plain documents:
+      <a href="/api/latest">latest report (JSON)</a> · <a href="/methodology.html">methodology</a> · <a href="/glossary.html">glossary</a> · <a href="/eli5.html">the simple guide</a>
+    </div>
+  </noscript>
+
+  <div id="report-area">
+    <h2 class="vh">Today's report</h2>
+    <div id="loader" aria-hidden="true"></div>
+    <section id="sec-bias" aria-label="Overall bias">
+      <div id="bias"></div>
+    </section>
+
+    <section aria-labelledby="h-checks">
+      <div class="panel">
+        <div class="panel-head">
+          <h3 id="h-checks">Indicator readings and roles</h3>
+          <span class="aside">scanned automatically 09:00 to 09:15 IST, Monday to Friday</span>
+        </div>
+        <div id="checks"></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-context">
+      <div class="panel">
+        <div class="panel-head">
+          <h3 id="h-context">Market context</h3>
+          <span class="aside">oil · rates · FX · metals · Asia, with plain language reads</span>
+        </div>
+        <div id="context"></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-pred" id="sec-pred">
+      <div class="panel">
+        <div class="panel-head">
+          <h3 id="h-pred">Model forecast: adaptive ensemble, NIFTY 50</h3>
+          <span class="aside">TimesFM 2.5 plus live LSTM, weight learned and relearned daily. <a href="/model.html">Model details and backtest</a></span>
+        </div>
+        <div id="prediction"></div>
+      </div>
+      <div class="panel" style="margin-top:24px">
+        <div class="panel-head">
+          <h3>Second opinion: Google TimesFM</h3>
+          <span class="aside"><a href="/model.html#timesfm">what this is</a></span>
+        </div>
+        <div id="model-analysis"></div>
+      </div>
+    </section>
+
+    <section id="sec-news" aria-labelledby="h-news">
+      <h2 id="h-news">What else is moving markets</h2>
+      <p class="status-line" id="news-status" role="status" aria-live="polite">Loading headlines and events…</p>
+      <div id="news-panel"></div>
+    </section>
+
+    <section aria-labelledby="h-article">
+      <div class="panel">
+        <div class="panel-head">
+          <h3 id="h-article">Validation: the article's HPQ model</h3>
+          <span class="aside">TensorFlow 1.6 / Python 3.6, exact tutorial architecture</span>
+        </div>
+        <p class="src" style="margin-top:0">Before forecasting NIFTY, the same 3 layer LSTM code was trained on the article's own dataset
+        (HPQ daily bars, 1970 to 2017, 11,000 row split) and reproduced the article's reported test MSE range. That is the evidence the port is faithful.</p>
+        <div id="article-exhibit"></div>
+      </div>
+    </section>
+  </div>
+
+  <section aria-labelledby="h-history">
+    <h2 id="h-history">Report archive</h2>
+    <div id="history"></div>
+  </section>
+
+  <section aria-labelledby="h-static" class="prose" style="margin-top:48px">
+    <h2 id="h-static">What this is</h2>
+    <p>A decision framework, not a vote counter. At 09:00 IST every trading day a cloud function builds the opening bias from
+    GIFT Nifty's implied gap, checks it against global cues (US close, live US futures, Asia) and the NSE pre open session,
+    gauges risk from India VIX against its own 1 year range, and runs a 3 layer LSTM trained on 18 years of NIFTY history
+    blended with a zero shot Google TimesFM forecast. At 09:20 IST a confirmation pass records what price action actually did.
+    No accounts, no tracking, no upsell. Sources are listed on every row. Each source has automatic fallbacks, and their state is shown
+    above. When everything fails you see the word unavailable, never a guess. Every term links to the <a href="/glossary.html">glossary</a>,
+    and the whole site has a <a href="/eli5.html">simple explanation page</a>.</p>
+    <p><a href="/methodology.html">Read the full methodology</a> · <a href="/model.html">Inspect the models</a> · <a href="/stocks.html">Per stock forecasts</a></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="cols">
+      <div style="flex:2 1 280px">
+        <h2 translate="no">Premarket India</h2>
+        <p style="max-width:44ch;color:var(--text-muted);font-size:13px">
+          Independent research tool. Not a broker, not an advisor.
+          Nothing here is investment advice; markets can move against any signal.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/">Dashboard</a></li>
+          <li><a href="/stocks.html">Stocks</a></li>
+          <li><a href="/model.html">Models</a></li>
+          <li><a href="/search.html">Search</a></li>
+          <li><a href="/glossary.html">Glossary</a></li>
+          <li><a href="/eli5.html">ELI5</a></li>
+          <li><a href="/api/history">API: history index</a></li>
+          <li><a href="/api/latest">API: latest report</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="/privacy.html">Privacy policy</a></li>
+          <li><a href="/methodology.html#sources">Data sources</a></li>
+          <li><a href="/methodology.html#faq">FAQ</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>Data: CNBC and Yahoo Finance (US indices), Yahoo Finance (India VIX, NIFTY history, global context),
+      TradingView (GIFT Nifty), Nasdaq quote API (per stock page). Prices may be delayed. All data is the property of its
+      respective providers; this project displays snapshots for research and does not redistribute datasets.</p>
+      <p>&copy; 2026 Premarket India. Built to run unattended on Netlify Functions and Blobs.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="to-top" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+</body>
+</html>

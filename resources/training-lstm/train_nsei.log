@@ -1,0 +1,150 @@
+2026-10-17 10:06:43.879102: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+/home/user/opt/py36/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:517: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/home/user/opt/py36/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:518: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/home/user/opt/py36/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:519: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/home/user/opt/py36/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:520: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/home/user/opt/py36/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:521: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/home/user/opt/py36/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+Loaded data from the Kaggle repository
+MSE error for standard averaging: 0.00349
+MSE error for EMA averaging: 0.00002
+
+
+Unrolled index 0
+	Inputs:  [0.02610364 0.41049093 0.7285385  0.15917309 0.5150336 ]
+
+	Output: [0.11419249 0.41516268 0.7306893  0.15968497 0.5150336 ]
+
+
+Unrolled index 1
+	Inputs:  [0.04960594 0.41158104 0.7306893  0.15968497 0.5181536 ]
+
+	Output: [0.04960594 0.41516268 0.7306893  0.16060323 0.5181536 ]
+
+
+Unrolled index 2
+	Inputs:  [0.0723508  0.4128793  0.73347795 0.16009727 0.5203108 ]
+
+	Output: [0.0723508  0.41554958 0.73347795 0.16069715 0.52558184]
+
+
+Unrolled index 3
+	Inputs:  [0.0940209  0.41438785 0.7356103  0.16054465 0.5226754 ]
+
+	Output: [0.13352266 0.41554958 0.73736846 0.16086207 0.5355836 ]
+
+
+Unrolled index 4
+	Inputs:  [0.11419249 0.41516268 0.73736846 0.16060323 0.52558184]
+
+	Output: [0.13352266 0.41554958 0.74171966 0.16060323 0.5355836 ]
+Defining training Loss
+Learning rate decay operations
+TF Optimization operations
+	All done
+Defining prediction related TF functions
+	All done
+Initialized
+Average loss at step 1: 3.622549
+	Test MSE: 0.22096
+	Finished Predictions
+Average loss at step 2: 0.857259
+	Test MSE: 0.08496
+	Finished Predictions
+Average loss at step 3: 0.598497
+	Test MSE: 0.02181
+	Finished Predictions
+Average loss at step 4: 0.215905
+	Test MSE: 0.00133
+	Finished Predictions
+Average loss at step 5: 0.195362
+	Test MSE: 0.01752
+	Finished Predictions
+Average loss at step 6: 0.147591
+	Test MSE: 0.00187
+	Finished Predictions
+Average loss at step 7: 0.112857
+	Decreasing learning rate by 0.5
+	Test MSE: 0.00340
+	Finished Predictions
+Average loss at step 8: 0.086145
+	Test MSE: 0.00220
+	Finished Predictions
+Average loss at step 9: 0.095722
+	Test MSE: 0.00131
+	Finished Predictions
+Average loss at step 10: 0.099697
+	Test MSE: 0.00129
+	Finished Predictions
+Average loss at step 11: 0.093822
+	Test MSE: 0.00138
+	Finished Predictions
+Average loss at step 12: 0.076118
+	Test MSE: 0.00151
+	Finished Predictions
+Average loss at step 13: 0.078916
+	Decreasing learning rate by 0.5
+	Test MSE: 0.00135
+	Finished Predictions
+Average loss at step 14: 0.076404
+	Test MSE: 0.00131
+	Finished Predictions
+Average loss at step 15: 0.086793
+	Test MSE: 0.00119
+	Finished Predictions
+Average loss at step 16: 0.087376
+	Test MSE: 0.00118
+	Finished Predictions
+Average loss at step 17: 0.088328
+	Test MSE: 0.00119
+	Finished Predictions
+Average loss at step 18: 0.070086
+	Test MSE: 0.00129
+	Finished Predictions
+Average loss at step 19: 0.074940
+	Decreasing learning rate by 0.5
+	Test MSE: 0.00118
+	Finished Predictions
+Average loss at step 20: 0.080248
+	Test MSE: 0.00114
+	Finished Predictions
+Average loss at step 21: 0.085886
+	Test MSE: 0.00120
+	Finished Predictions
+Average loss at step 22: 0.073139
+	Test MSE: 0.00119
+	Finished Predictions
+Average loss at step 23: 0.062373
+	Decreasing learning rate by 0.5
+	Test MSE: 0.00135
+	Finished Predictions
+Average loss at step 24: 0.071951
+	Test MSE: 0.00113
+	Finished Predictions
+Average loss at step 25: 0.078589
+	Test MSE: 0.00116
+	Finished Predictions
+Average loss at step 26: 0.077909
+	Test MSE: 0.00112
+	Finished Predictions
+Average loss at step 27: 0.076560
+	Test MSE: 0.00111
+	Finished Predictions
+Average loss at step 28: 0.078219
+	Test MSE: 0.00114
+	Finished Predictions
+Average loss at step 29: 0.067317
+	Test MSE: 0.00110
+	Finished Predictions
+Average loss at step 30: 0.076949
+	Test MSE: 0.00110
+	Finished Predictions
+EXPORTED models/nifty-model.json
+weight vars: b, rnn/multi_rnn_cell/cell_0/lstm_cell/bias, rnn/multi_rnn_cell/cell_0/lstm_cell/kernel, rnn/multi_rnn_cell/cell_1/lstm_cell/bias, rnn/multi_rnn_cell/cell_1/lstm_cell/kernel, rnn/multi_rnn_cell/cell_2/lstm_cell/bias, rnn/multi_rnn_cell/cell_2/lstm_cell/kernel, w
+ref preds[:3]: [0.8719465136528015, 0.8699017763137817, 0.868192195892334]
